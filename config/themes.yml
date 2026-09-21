@@ -1,6 +1,6 @@
 # Custom themes for leseupelanto-bot/legacy-
 # Whippy UI skins (theme-ui-* / bird-ui-*) are intentionally omitted.
-default: styles/legacy-light.scss
+default: styles/legacy-default.scss
 legacy-light: styles/legacy-light.scss
 legacy-dark: styles/legacy-dark.scss
 mastodon-light: styles/mastodon-light.scss
