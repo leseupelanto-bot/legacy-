@@ -1,0 +1,13 @@
+default: styles/legacy-light.scss
+legacy-light: styles/legacy-light.scss
+legacy-dark: styles/legacy-dark.scss
+
+# 기존 Whippy 테마 키를 새 Legacy 테마로 연결해,
+# 기존 사용자 설정이 깨지지 않도록 하면서 실제 Whippy 스킨은 제거합니다.
+theme-ui-dark: styles/legacy-dark.scss
+bird-ui-light: styles/legacy-light.scss
+bird-ui-dark: styles/legacy-dark.scss
+
+mastodon-light: styles/mastodon-light.scss
+mastodon-dark: styles/application.scss
+contrast: styles/contrast.scss
