@@ -22,6 +22,7 @@ RUN apt-get update && apt-get -yq dist-upgrade && \
 COPY app/javascript/styles/legacy-light.scss /opt/mastodon/app/javascript/styles/legacy-light.scss
 COPY app/javascript/styles/legacy-dark.scss /opt/mastodon/app/javascript/styles/legacy-dark.scss
 COPY config/themes.yml /opt/mastodon/config/themes.yml
+COPY config/locales/zz_legacy_ko.yml /opt/mastodon/config/locales/zz_legacy_ko.yml
 COPY ["public/Legacy Light.png", "/opt/mastodon/app/javascript/images/legacy-light-bg.png"]
 COPY ["public/Legacy Dark.png", "/opt/mastodon/app/javascript/images/legacy-dark-bg.png"]
 COPY public/ /tmp/legacy-public/
