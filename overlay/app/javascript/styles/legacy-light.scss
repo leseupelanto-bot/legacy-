@@ -1,0 +1,33 @@
+@import 'mastodon-light/variables';
+@import 'application';
+@import 'mastodon-light/diff';
+
+/* Legacy Light — Whippy 기능은 유지하고 Whippy UI 스킨은 사용하지 않음 */
+html {
+  background: #f3f3f3;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  background: transparent !important;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url('/theme/legacy-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#mastodon,
+.app-holder,
+.ui {
+  background: transparent !important;
+}
