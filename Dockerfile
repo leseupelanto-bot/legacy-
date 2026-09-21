@@ -9,12 +9,19 @@ ARG WHIPPY_REF
 COPY --link --from=ruby /opt/ruby /opt/ruby
 ENV DEBIAN_FRONTEND="noninteractive" PATH="${PATH}:/opt/ruby/bin"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 RUN apt-get update && apt-get -yq dist-upgrade && \
     apt-get install -y --no-install-recommends \
       build-essential git libicu-dev libidn-dev libpq-dev libjemalloc-dev \
       zlib1g-dev libgdbm-dev libgmp-dev libssl-dev libyaml-0-2 ca-certificates \
       libreadline8 python3 shared-mime-info && \
     git clone --depth 1 --branch "${WHIPPY_REF}" https://github.com/whippyshou/mastodon.git /opt/mastodon
+
+# Legacy custom theme overlay:
+# keeps Whippy Edition functionality, replaces only its visual theme files.
+COPY overlay/ /tmp/legacy-overlay/
+RUN cp -a /tmp/legacy-overlay/. /opt/mastodon/
+
 WORKDIR /opt/mastodon
 RUN bundle config set --local deployment 'true' && \
     bundle config set --local without 'development test' && \
@@ -34,6 +41,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     RAILS_SERVE_STATIC_FILES="true" \
     BIND="0.0.0.0"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 RUN apt-get update && \
     echo "Etc/UTC" > /etc/localtime && \
     groupadd -g "${GID}" mastodon && \
@@ -42,9 +50,12 @@ RUN apt-get update && \
       whois wget procps libssl3 libpq5 imagemagick ffmpeg libjemalloc2 libicu72 \
       libidn12 libyaml-0-2 file ca-certificates tzdata libreadline8 tini && \
     ln -s /opt/mastodon /mastodon
+
 COPY --chown=mastodon:mastodon --from=build /opt/mastodon /opt/mastodon
+
 USER mastodon
 WORKDIR /opt/mastodon
 RUN OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile
+
 ENTRYPOINT ["/usr/bin/tini", "--"]
 EXPOSE 3000 4000
