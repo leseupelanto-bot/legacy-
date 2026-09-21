@@ -1,0 +1,40 @@
+@import 'application';
+
+/* Legacy Dark: vanilla Mastodon UI + custom background */
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background-color: #0a0a0a !important;
+  background-image: url('/legacy-dark.png') !important;
+  background-position: center bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
+.ui,
+.page-wrapper,
+.columns-area,
+.layout-single-column .ui,
+.tabs-bar__wrapper {
+  background: transparent !important;
+}
+
+.column > .scrollable,
+.drawer__inner,
+.column-header,
+.column-header__collapsible,
+.navigation-panel,
+.compose-panel,
+.getting-started,
+.getting-started__wrapper,
+.account__section-headline,
+.notification__filter-bar,
+.column-back-button,
+.empty-column-indicator,
+.regeneration-indicator {
+  background-color: rgba(18, 18, 18, 0.88) !important;
+  backdrop-filter: blur(2px);
+}
