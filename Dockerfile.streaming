@@ -1,0 +1,24 @@
+# syntax=docker/dockerfile:1.4
+FROM node:20.6-bookworm-slim
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    NODE_ENV=production \
+    RAILS_ENV=production
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      ca-certificates git ruby-full build-essential python3 && \
+    gem install mail --no-document && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN git clone --depth 1 --branch "v4.3.1+whippy" \
+    https://github.com/whippyshou/mastodon.git /opt/mastodon
+
+WORKDIR /opt/mastodon
+
+RUN yarn install --pure-lockfile --production --network-timeout 600000 && \
+    yarn cache clean
+
+EXPOSE 4000
