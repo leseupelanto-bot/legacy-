@@ -19,6 +19,28 @@ body {
   content: url('../images/logos/Logo-Dark.png') !important;
 }
 
+/* Keep the Legacy wordmark visually centered in the home header. */
+.ui__header__logo {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 15px !important;
+  margin: 0 !important;
+}
+
+.ui__header__logo .logo--wordmark {
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+
+.ui__header__links {
+  margin-left: auto !important;
+}
+
 .ui,
 .page-wrapper,
 .columns-area,
