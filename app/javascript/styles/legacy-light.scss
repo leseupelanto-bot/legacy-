@@ -16,6 +16,11 @@ body {
   background-attachment: fixed !important;
 }
 
+/* Legacy home wordmark */
+.logo--wordmark {
+  content: url('../images/logos/Logo-Light.png') !important;
+}
+
 .ui,
 .page-wrapper,
 .columns-area,
