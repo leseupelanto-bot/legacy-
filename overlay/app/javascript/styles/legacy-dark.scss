@@ -1,0 +1,32 @@
+@import 'application';
+
+/* Legacy Dark — 동일 배경을 반전해 다크 버전으로 표시 */
+html {
+  background: #111;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  background: transparent !important;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url('/theme/legacy-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: invert(1);
+}
+
+#mastodon,
+.app-holder,
+.ui {
+  background: transparent !important;
+}
