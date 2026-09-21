@@ -17,10 +17,13 @@ RUN apt-get update && apt-get -yq dist-upgrade && \
       libreadline8 python3 shared-mime-info && \
     git clone --depth 1 --branch "${WHIPPY_REF}" https://github.com/whippyshou/mastodon.git /opt/mastodon
 
-# Legacy custom theme overlay:
-# keeps Whippy Edition functionality, replaces only its visual theme files.
-COPY overlay/ /tmp/legacy-overlay/
-RUN cp -a /tmp/legacy-overlay/. /opt/mastodon/
+# Legacy custom themes:
+# keep Whippy Edition functionality, replace only the visual theme layer.
+COPY app/javascript/styles/legacy-light.scss /opt/mastodon/app/javascript/styles/legacy-light.scss
+COPY app/javascript/styles/legacy-dark.scss /opt/mastodon/app/javascript/styles/legacy-dark.scss
+COPY config/themes.yml /opt/mastodon/config/themes.yml
+COPY public/ /tmp/legacy-public/
+RUN cp -a /tmp/legacy-public/. /opt/mastodon/public/
 
 WORKDIR /opt/mastodon
 RUN bundle config set --local deployment 'true' && \
