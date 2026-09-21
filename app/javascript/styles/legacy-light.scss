@@ -1,0 +1,42 @@
+@import 'mastodon-light/variables';
+@import 'application';
+@import 'mastodon-light/diff';
+
+/* Legacy Light: vanilla Mastodon UI + custom background */
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background-color: #f4f4f2 !important;
+  background-image: url('/legacy-light.png') !important;
+  background-position: center bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
+.ui,
+.page-wrapper,
+.columns-area,
+.layout-single-column .ui,
+.tabs-bar__wrapper {
+  background: transparent !important;
+}
+
+.column > .scrollable,
+.drawer__inner,
+.column-header,
+.column-header__collapsible,
+.navigation-panel,
+.compose-panel,
+.getting-started,
+.getting-started__wrapper,
+.account__section-headline,
+.notification__filter-bar,
+.column-back-button,
+.empty-column-indicator,
+.regeneration-indicator {
+  background-color: rgba(250, 250, 248, 0.90) !important;
+  backdrop-filter: blur(2px);
+}
