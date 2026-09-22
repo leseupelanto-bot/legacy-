@@ -83,11 +83,22 @@ body {
   margin: 0 auto !important;
 }
 
-/* Settings sidebar logo position only — do not affect the home header. */
+/* Center the settings logo in the sidebar directly above "Back to Mastodon". */
+.admin-wrapper .sidebar > a:first-child {
+  display: flex !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px 10px 12px !important;
+  margin: 0 !important;
+}
+
 .admin-wrapper .sidebar > a:first-child .logo {
-  position: relative !important;
-  left: 30px !important;
-  top: -30px !important;
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  margin: 0 auto !important;
 }
 
 .ui,
