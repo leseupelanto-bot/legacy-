@@ -17,8 +17,16 @@ body {
 }
 
 /* Legacy home wordmark */
-.logo--wordmark {
-  content: url('../images/logos/Logo-Light.png') !important;
+.legacy-logo--light {
+  display: block !important;
+}
+
+.legacy-logo--dark {
+  display: none !important;
+}
+
+.ui__header__logo .logo--icon {
+  display: none !important;
 }
 
 /* Keep the Legacy wordmark visually centered in the home header. */

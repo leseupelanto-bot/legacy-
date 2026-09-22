@@ -27,6 +27,7 @@ COPY ["public/Legacy Light.png", "/opt/mastodon/app/javascript/images/legacy-lig
 COPY ["public/Legacy Dark.png", "/opt/mastodon/app/javascript/images/legacy-dark-bg.png"]
 COPY ["app/javascript/images/logos/Logo-Light.png", "/opt/mastodon/app/javascript/images/logos/Logo-Light.png"]
 COPY ["app/javascript/images/logos/Logo-Dark.png", "/opt/mastodon/app/javascript/images/logos/Logo-Dark.png"]
+COPY app/javascript/mastodon/components/logo.tsx /opt/mastodon/app/javascript/mastodon/components/logo.tsx
 COPY public/ /tmp/legacy-public/
 RUN cp -a /tmp/legacy-public/. /opt/mastodon/public/
 
