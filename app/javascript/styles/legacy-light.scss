@@ -148,3 +148,41 @@ body {
   background-color: rgba(250, 250, 248, 0.90) !important;
   backdrop-filter: blur(2px);
 }
+
+
+/* Keep the signed-in profile avatar slot visible even while composing. */
+.navigation-bar > a:first-child,
+.is-composing .navigation-bar > a:first-child {
+  display: block !important;
+  flex: 0 0 46px !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  margin: 0 10px 0 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.navigation-bar > a:first-child .account__avatar,
+.is-composing .navigation-bar > a:first-child .account__avatar {
+  display: block !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: hidden !important;
+}
+
+.navigation-bar > a:first-child .account__avatar img,
+.is-composing .navigation-bar > a:first-child .account__avatar img {
+  display: block !important;
+  width: 46px !important;
+  height: 46px !important;
+  object-fit: cover !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
