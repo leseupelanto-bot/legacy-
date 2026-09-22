@@ -16,43 +16,60 @@ body {
   background-attachment: fixed !important;
 }
 
-/* Legacy home wordmark: use Whippy's original logo slot and layout. */
-:root {
-  --logo: url('../images/logos/Logo-Light.png') !important;
-  --m-logo: url('../images/logos/Logo-Light.png') !important;
-}
-
-/* Do not reposition the home logo. Let Whippy keep its native slot dimensions. */
+/* Legacy home wordmark: keep the original Whippy header slot, but use only the Legacy image. */
+.ui__header__logo,
 .layout-single-column .ui__header__logo,
-.layout-single-column .column-link.column-link--logo,
-.layout-multiple-columns .ui__header__logo,
-.layout-multiple-columns .column-link.column-link--logo {
+.layout-multiple-columns .ui__header__logo {
   position: static !important;
   left: auto !important;
   top: auto !important;
   inset: auto !important;
   transform: none !important;
-  background-image: var(--logo) !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 230px !important;
+  width: 230px !important;
+  height: 85px !important;
+  padding: 0 !important;
   margin: 0 !important;
+  box-sizing: border-box !important;
+  background-image: none !important;
 }
 
-/* Whippy hides/replaces the image with a background logo; keep a single centered logo. */
-.layout-single-column .ui__header__logo img,
-.layout-single-column .ui__header__logo svg,
-.layout-multiple-columns .ui__header__logo img,
-.layout-multiple-columns .ui__header__logo svg {
+.ui__header__logo img.legacy-logo {
+  width: auto !important;
+  height: auto !important;
+  max-width: 220px !important;
+  max-height: 80px !important;
+  object-fit: contain !important;
+  margin: auto !important;
+}
+
+.ui__header__logo img.legacy-logo--light {
+  display: block !important;
+}
+
+.ui__header__logo img.legacy-logo--dark {
+  display: none !important;
+}
+
+.ui__header__logo .logo--icon {
   display: none !important;
 }
 
 @media screen and (max-width: 889px) {
+  .ui__header__logo,
   .layout-single-column .ui__header__logo,
-  .layout-single-column .column-link.column-link--logo,
-  .layout-multiple-columns .ui__header__logo,
-  .layout-multiple-columns .column-link.column-link--logo {
-    background-image: var(--m-logo) !important;
-    background-position: center center !important;
+  .layout-multiple-columns .ui__header__logo {
+    flex-basis: 50px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .ui__header__logo img.legacy-logo {
+    max-width: 46px !important;
+    max-height: 46px !important;
   }
 }
 
