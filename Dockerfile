@@ -38,7 +38,9 @@ COPY app/serializers/rest/account_serializer.rb /opt/mastodon/app/serializers/re
 COPY app/views/settings/profiles/show.html.haml /opt/mastodon/app/views/settings/profiles/show.html.haml
 COPY app/models/concerns/account_avatar.rb /opt/mastodon/app/models/concerns/account_avatar.rb
 COPY public/ /tmp/legacy-public/
-RUN cp -a /tmp/legacy-public/. /opt/mastodon/public/
+RUN cp -a /tmp/legacy-public/. /opt/mastodon/public/ && \
+    base64 -d /opt/mastodon/public/favicon.ico.b64 > /opt/mastodon/public/favicon.ico && \
+    rm /opt/mastodon/public/favicon.ico.b64
 
 WORKDIR /opt/mastodon
 RUN bundle config set --local deployment 'true' && \
