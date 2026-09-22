@@ -20,7 +20,7 @@ module AccountAvatar
     # Avatar upload
     has_attached_file :avatar,
                       styles: ->(f) { avatar_styles(f) },
-                      default_url: '/avatars/original/legacy-raven.png',
+                      default_url: '/avatars/original/legacy-raven-v3.png',
                       convert_options: { all: '+profile "!icc,*" +set date:modify +set date:create +set date:timestamp' },
                       processors: [:lazy_thumbnail]
     validates_attachment_content_type :avatar, content_type: IMAGE_MIME_TYPES
@@ -29,13 +29,13 @@ module AccountAvatar
   end
 
   def avatar_original_url
-    return '/avatars/original/legacy-raven.png' if avatar_file_name.blank?
+    return '/avatars/original/legacy-raven-v3.png' if avatar_file_name.blank?
 
     avatar.url(:original)
   end
 
   def avatar_static_url
-    return '/avatars/original/legacy-raven.png' if avatar_file_name.blank?
+    return '/avatars/original/legacy-raven-v3.png' if avatar_file_name.blank?
 
     avatar_content_type == 'image/gif' ? avatar.url(:static) : avatar_original_url
   end

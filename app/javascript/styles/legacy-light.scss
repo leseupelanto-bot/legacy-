@@ -16,10 +16,12 @@ body {
   background-attachment: fixed !important;
 }
 
-/* Legacy home wordmark: keep the original Whippy header slot, but use only the Legacy image. */
+/* Legacy home/navigation wordmark — isolated from Whippy wordmark replacement rules. */
 .ui__header__logo,
 .layout-single-column .ui__header__logo,
-.layout-multiple-columns .ui__header__logo {
+.layout-multiple-columns .ui__header__logo,
+.layout-single-column .column-link.column-link--logo,
+.layout-multiple-columns .column-link.column-link--logo {
   position: static !important;
   left: auto !important;
   top: auto !important;
@@ -37,42 +39,37 @@ body {
   background: transparent !important;
   background-image: none !important;
   background-repeat: no-repeat !important;
-  background-size: auto !important;
 }
 
-/* Never let Whippy/background fallback artwork render in or around the top logo slot. */
 .ui__header__logo::before,
 .ui__header__logo::after,
-.layout-single-column .ui__header__logo::before,
-.layout-single-column .ui__header__logo::after,
-.layout-multiple-columns .ui__header__logo::before,
-.layout-multiple-columns .ui__header__logo::after {
+.column-link.column-link--logo::before,
+.column-link.column-link--logo::after {
   content: none !important;
   display: none !important;
   background: none !important;
-  background-image: none !important;
 }
 
-.layout-single-column .column-link.column-link--logo,
-.layout-multiple-columns .column-link.column-link--logo {
-  background-image: none !important;
-  background-repeat: no-repeat !important;
-}
-
-.ui__header__logo img.legacy-logo {
+.ui__header__logo img.legacy-logo,
+.column-link.column-link--logo img.legacy-logo {
+  content: normal !important;
+  display: block !important;
   width: 230px !important;
   height: 85px !important;
   max-width: 230px !important;
   max-height: 85px !important;
   object-fit: contain !important;
   margin: auto !important;
+  background: transparent !important;
 }
 
-.ui__header__logo img.legacy-logo--light {
+.ui__header__logo img.legacy-logo--light,
+.column-link.column-link--logo img.legacy-logo--light {
   display: block !important;
 }
 
-.ui__header__logo img.legacy-logo--dark {
+.ui__header__logo img.legacy-logo--dark,
+.column-link.column-link--logo img.legacy-logo--dark {
   display: none !important;
 }
 
@@ -90,9 +87,19 @@ body {
   }
 
   .ui__header__logo img.legacy-logo {
+    width: 46px !important;
+    height: auto !important;
     max-width: 46px !important;
     max-height: 46px !important;
   }
+}
+
+/* Blank avatars only: bypass old cached Whippy missing-avatar artwork. */
+.account__avatar > img[src*="/avatars/original/missing.png"],
+.account__avatar > img[src*="/avatars/original/legacy-raven.png"],
+img.account__avatar[src*="/avatars/original/missing.png"],
+img.account__avatar[src*="/avatars/original/legacy-raven.png"] {
+  content: url('/avatars/original/legacy-raven-v3.png') !important;
 }
 
 /* Use the Legacy brand in settings/admin layouts too. */

@@ -7,12 +7,12 @@ export const WordmarkLogo: React.FC = () => (
     <img
       src={headerLightLogo}
       alt='Legacy'
-      className='logo logo--wordmark legacy-logo legacy-logo--light'
+      className='logo legacy-logo legacy-logo--light'
     />
     <img
       src={headerDarkLogo}
       alt='Legacy'
-      className='logo logo--wordmark legacy-logo legacy-logo--dark'
+      className='logo legacy-logo legacy-logo--dark'
     />
   </>
 );
