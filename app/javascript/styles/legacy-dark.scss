@@ -1,3 +1,15 @@
+/* Legacy neutral accent: use dark gray instead of inherited accent colors. */
+$ui-primary-color: #777777;
+$ui-highlight-color: #4a4a4a;
+$ui-button-background-color: #4a4a4a;
+$ui-button-focus-background-color: #5a5a5a;
+$ui-button-focus-outline-color: #707070;
+$ui-button-tertiary-color: #666666;
+$ui-button-tertiary-border-color: #666666;
+$ui-button-tertiary-focus-background-color: #5a5a5a;
+$highlight-text-color: #777777;
+$ui-button-icon-hover-background-color: rgba(74, 74, 74, 35%);
+
 @import 'application';
 
 /* Legacy Dark: vanilla Mastodon UI + custom background */
