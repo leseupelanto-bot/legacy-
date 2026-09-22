@@ -27,7 +27,7 @@ body {
 .ui__header__logo {
   position: absolute !important;
   left: calc(50% + 100px) !important;
-  top: 50% !important;
+  top: calc(50% + 30px) !important;
   transform: translate(-50%, -50%) !important;
   display: flex !important;
   align-items: center !important;
