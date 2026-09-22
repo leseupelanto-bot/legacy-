@@ -94,14 +94,6 @@ body {
   }
 }
 
-/* Blank avatars only: bypass old cached Whippy missing-avatar artwork. */
-.account__avatar > img[src*="/avatars/original/missing.png"],
-.account__avatar > img[src*="/avatars/original/legacy-raven.png"],
-img.account__avatar[src*="/avatars/original/missing.png"],
-img.account__avatar[src*="/avatars/original/legacy-raven.png"] {
-  content: url('/avatars/original/legacy-raven-v3.png') !important;
-}
-
 /* Use the Legacy brand in settings/admin layouts too. */
 .admin-wrapper .sidebar > a:first-child .logo,
 .admin-wrapper .sidebar__toggle__logo .logo {
