@@ -35,10 +35,29 @@ const messages = defineMessages({
 const mapStateToProps = state => {
   const publicItems = state.getIn(['timelines', 'public', 'items'], ImmutableList());
   const publicPending = state.getIn(['timelines', 'public', 'pendingItems'], ImmutableList());
+  const statuses = state.get('statuses');
+
+  const isDirectStatus = status => {
+    if (!status) {
+      return false;
+    }
+
+    if (status.get('visibility') === 'direct') {
+      return true;
+    }
+
+    const reblogId = status.get('reblog');
+    const reblog = reblogId ? statuses.get(reblogId) : null;
+
+    return reblog?.get('visibility') === 'direct';
+  };
 
   return {
-    publicStatusIds: publicPending.concat(publicItems).filter(id => id !== null),
-    statuses: state.get('statuses'),
+    publicStatusIds: publicPending
+      .concat(publicItems)
+      .filter(id => id !== null)
+      .filter(id => !isDirectStatus(statuses.get(id))),
+    statuses,
     isLoadingPublic: state.getIn(['timelines', 'public', 'isLoading'], false),
     hasMorePublic: state.getIn(['timelines', 'public', 'hasMore'], true),
     hasUnread: state.getIn(['timelines', 'public', 'unread'], 0) > 0,
@@ -154,14 +173,18 @@ class HomeTimeline extends PureComponent {
     this.props.dispatch((dispatch, getState) => {
       api(getState).get('/api/v1/notifications', { params }).then(response => {
         const notifications = response.data || [];
-        const statuses = notifications.map(item => item.status).filter(Boolean);
+        const mentionNotifications = notifications.filter(item =>
+          item.type === 'mention'
+          && item.status
+          && item.status.visibility !== 'direct'
+        );
+        const statuses = mentionNotifications.map(item => item.status);
 
         if (statuses.length > 0) {
           dispatch(importFetchedStatuses(statuses));
         }
 
-        const incoming = notifications
-          .filter(item => item.type === 'mention' && item.status)
+        const incoming = mentionNotifications
           .map(item => ({
             notificationId: item.id,
             statusId: item.status.id,
@@ -225,9 +248,10 @@ class HomeTimeline extends PureComponent {
     const entries = new Map();
 
     publicStatusIds.forEach(id => {
-      const createdAt = statuses.getIn([id, 'created_at']);
+      const status = statuses.get(id);
+      const createdAt = status?.get('created_at');
 
-      if (createdAt) {
+      if (createdAt && status?.get('visibility') !== 'direct') {
         entries.set(id, {
           id,
           createdAt,
@@ -237,9 +261,10 @@ class HomeTimeline extends PureComponent {
     });
 
     this.state.mentions.forEach(item => {
-      const createdAt = statuses.getIn([item.statusId, 'created_at']) || item.createdAt;
+      const status = statuses.get(item.statusId);
+      const createdAt = status?.get('created_at') || item.createdAt;
 
-      if (createdAt) {
+      if (createdAt && status?.get('visibility') !== 'direct') {
         entries.set(item.statusId, {
           id: item.statusId,
           createdAt,

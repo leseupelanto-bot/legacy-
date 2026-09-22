@@ -26,6 +26,21 @@ const mapStateToProps = state => {
   const publicPending = state.getIn(['timelines', 'public', 'pendingItems'], ImmutableList());
   const statuses = state.get('statuses');
 
+  const isDirectStatus = status => {
+    if (!status) {
+      return false;
+    }
+
+    if (status.get('visibility') === 'direct') {
+      return true;
+    }
+
+    const reblogId = status.get('reblog');
+    const reblog = reblogId ? statuses.get(reblogId) : null;
+
+    return reblog?.get('visibility') === 'direct';
+  };
+
   const isMentionOfMe = status => {
     if (!status) {
       return false;
@@ -48,7 +63,10 @@ const mapStateToProps = state => {
   const statusIds = publicPending
     .concat(publicItems)
     .filter(id => id !== null)
-    .filter(id => !isMentionOfMe(statuses.get(id)));
+    .filter(id => {
+      const status = statuses.get(id);
+      return !isDirectStatus(status) && !isMentionOfMe(status);
+    });
 
   return {
     statusIds,
