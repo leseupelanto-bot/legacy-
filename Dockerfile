@@ -1,3 +1,4 @@
+# Legacy avatar/frontend redeploy trigger
 # syntax=docker/dockerfile:1.4
 ARG NODE_VERSION="20.6-bookworm-slim"
 ARG WHIPPY_REF="v4.3.1+whippy"
