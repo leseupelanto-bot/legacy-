@@ -83,6 +83,13 @@ body {
   margin: 0 auto !important;
 }
 
+/* Settings sidebar logo position only — do not affect the home header. */
+.admin-wrapper .sidebar > a:first-child .logo {
+  position: relative !important;
+  left: -50px !important;
+  top: 50px !important;
+}
+
 .ui,
 .page-wrapper,
 .columns-area,
