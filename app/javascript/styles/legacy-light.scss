@@ -1,4 +1,17 @@
 @import 'mastodon-light/variables';
+
+/* Legacy neutral accent: replace Whippy pink points with dark gray. */
+$ui-primary-color: #6b6b6b;
+$ui-highlight-color: #444444;
+$ui-button-background-color: #444444;
+$ui-button-focus-background-color: #2f2f2f;
+$ui-button-focus-outline-color: #666666;
+$ui-button-tertiary-color: #555555;
+$ui-button-tertiary-border-color: #555555;
+$ui-button-tertiary-focus-background-color: #2f2f2f;
+$highlight-text-color: #444444;
+$ui-button-icon-hover-background-color: rgba(68, 68, 68, 25%);
+
 @import 'application';
 @import 'mastodon-light/diff';
 
