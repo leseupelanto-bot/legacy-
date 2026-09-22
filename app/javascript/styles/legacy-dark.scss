@@ -41,6 +41,18 @@ body {
   margin-left: auto !important;
 }
 
+/* Use the Legacy brand in settings/admin layouts too. */
+.admin-wrapper .sidebar > a:first-child .logo,
+.admin-wrapper .sidebar__toggle__logo .logo {
+  content: url('../images/logos/Logo-Dark.png') !important;
+  display: block !important;
+  width: min(220px, 100%) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  margin: 0 auto !important;
+}
+
 .ui,
 .page-wrapper,
 .columns-area,
