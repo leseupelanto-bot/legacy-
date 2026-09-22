@@ -17,6 +17,7 @@ body {
 }
 
 /* Legacy home wordmark */
+
 .legacy-logo--light {
   display: block !important;
 }
@@ -25,11 +26,6 @@ body {
   display: none !important;
 }
 
-.ui__header__logo .logo--icon {
-  display: none !important;
-}
-
-/* Keep the Legacy wordmark visually centered in the home header. */
 .ui__header__logo {
   position: absolute !important;
   left: 50% !important;
@@ -38,17 +34,41 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 0 15px !important;
+  width: auto !important;
+  height: 100% !important;
+  padding: 6px 12px !important;
   margin: 0 !important;
+  box-sizing: border-box !important;
+  background: none !important;
+  background-image: none !important;
+  z-index: 2 !important;
 }
 
 .ui__header__logo .logo--wordmark {
-  margin: 0 auto !important;
+  width: auto !important;
+  height: 42px !important;
+  max-width: min(360px, 55vw) !important;
+  max-height: calc(100% - 8px) !important;
+  margin: auto !important;
   object-fit: contain !important;
+}
+
+.ui__header__logo .logo--icon {
+  display: none !important;
 }
 
 .ui__header__links {
   margin-left: auto !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+/* Prevent Whippy theme background logos from appearing behind the Legacy logo. */
+.layout-single-column .ui__header__logo,
+.layout-multiple-columns .ui__header__logo,
+.column-link.column-link--logo {
+  background: none !important;
+  background-image: none !important;
 }
 
 /* Use the Legacy brand in settings/admin layouts too. */
