@@ -27,28 +27,30 @@ body {
 }
 
 .ui__header__logo {
-  position: absolute !important;
-  left: calc(50% + 100px) !important;
-  top: calc(50% + 30px) !important;
-  transform: translate(-50%, -50%) !important;
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: auto !important;
-  height: 100% !important;
-  padding: 6px 12px !important;
+  flex: 0 0 230px !important;
+  width: 230px !important;
+  height: 85px !important;
+  padding: 0 !important;
   margin: 0 !important;
   box-sizing: border-box !important;
   background: none !important;
   background-image: none !important;
-  z-index: 2 !important;
+  z-index: auto !important;
 }
 
 .ui__header__logo .logo--wordmark {
+  display: block !important;
   width: auto !important;
-  height: 42px !important;
-  max-width: min(360px, 55vw) !important;
-  max-height: calc(100% - 8px) !important;
+  height: auto !important;
+  max-width: 220px !important;
+  max-height: 80px !important;
   margin: auto !important;
   object-fit: contain !important;
 }
