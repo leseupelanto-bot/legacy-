@@ -30,6 +30,8 @@ COPY ["app/javascript/images/logos/Logo-Dark.png", "/opt/mastodon/app/javascript
 COPY ["app/javascript/images/logos/Header-Logo-Light.png", "/opt/mastodon/app/javascript/images/logos/Header-Logo-Light.png"]
 COPY ["app/javascript/images/logos/Header-Logo-Dark.png", "/opt/mastodon/app/javascript/images/logos/Header-Logo-Dark.png"]
 COPY app/javascript/mastodon/components/logo.tsx /opt/mastodon/app/javascript/mastodon/components/logo.tsx
+COPY ["app/javascript/images/avatars/legacy-raven.png", "/opt/mastodon/app/javascript/images/avatars/legacy-raven.png"]
+COPY app/javascript/mastodon/components/avatar.tsx /opt/mastodon/app/javascript/mastodon/components/avatar.tsx
 COPY app/models/concerns/account_avatar.rb /opt/mastodon/app/models/concerns/account_avatar.rb
 COPY public/ /tmp/legacy-public/
 RUN cp -a /tmp/legacy-public/. /opt/mastodon/public/
