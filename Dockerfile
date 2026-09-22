@@ -29,11 +29,6 @@ COPY ["app/javascript/images/logos/Logo-Light.png", "/opt/mastodon/app/javascrip
 COPY ["app/javascript/images/logos/Logo-Dark.png", "/opt/mastodon/app/javascript/images/logos/Logo-Dark.png"]
 COPY ["app/javascript/images/logos/Header-Logo-Light.png", "/opt/mastodon/app/javascript/images/logos/Header-Logo-Light.png"]
 COPY ["app/javascript/images/logos/Header-Logo-Dark.png", "/opt/mastodon/app/javascript/images/logos/Header-Logo-Dark.png"]
-# Replace every Whippy wordmark asset with the Legacy wordmarks as a hard fallback.
-COPY ["app/javascript/images/logos/Logo-Light.png", "/opt/mastodon/app/javascript/images/logos/wordmark_light.png"]
-COPY ["app/javascript/images/logos/Logo-Dark.png", "/opt/mastodon/app/javascript/images/logos/wordmark_dark.png"]
-COPY ["app/javascript/images/logos/Logo-Light.png", "/opt/mastodon/app/javascript/images/theme/wordmark_light.png"]
-COPY ["app/javascript/images/logos/Logo-Dark.png", "/opt/mastodon/app/javascript/images/theme/wordmark_dark.png"]
 COPY app/javascript/mastodon/components/logo.tsx /opt/mastodon/app/javascript/mastodon/components/logo.tsx
 COPY app/models/concerns/account_avatar.rb /opt/mastodon/app/models/concerns/account_avatar.rb
 COPY public/ /tmp/legacy-public/

@@ -29,10 +29,14 @@ module AccountAvatar
   end
 
   def avatar_original_url
+    return '/avatars/original/legacy-raven.png' if avatar_file_name.blank?
+
     avatar.url(:original)
   end
 
   def avatar_static_url
+    return '/avatars/original/legacy-raven.png' if avatar_file_name.blank?
+
     avatar_content_type == 'image/gif' ? avatar.url(:static) : avatar_original_url
   end
 end

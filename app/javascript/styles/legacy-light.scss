@@ -34,7 +34,29 @@ body {
   padding: 0 !important;
   margin: 0 !important;
   box-sizing: border-box !important;
+  background: transparent !important;
   background-image: none !important;
+  background-repeat: no-repeat !important;
+  background-size: auto !important;
+}
+
+/* Never let Whippy/background fallback artwork render in or around the top logo slot. */
+.ui__header__logo::before,
+.ui__header__logo::after,
+.layout-single-column .ui__header__logo::before,
+.layout-single-column .ui__header__logo::after,
+.layout-multiple-columns .ui__header__logo::before,
+.layout-multiple-columns .ui__header__logo::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+.layout-single-column .column-link.column-link--logo,
+.layout-multiple-columns .column-link.column-link--logo {
+  background-image: none !important;
+  background-repeat: no-repeat !important;
 }
 
 .ui__header__logo img.legacy-logo {
