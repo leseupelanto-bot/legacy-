@@ -10,7 +10,9 @@
 
     - if storage_host?
       %link{ rel: 'dns-prefetch', href: storage_host }/
-    %link{ rel: 'icon', href: '/favicon.png?v=legacy-raven-4', type: 'image/png', sizes: '64x64' }/
+
+    %link{ rel: 'icon', href: '/legacy-raven-favicon-v5.png', type: 'image/png', sizes: '64x64' }/
+    %link{ rel: 'shortcut icon', href: '/legacy-raven-favicon-v5.ico', type: 'image/x-icon' }/
 
     - %w(57 60 72 76 114 120 144 152 167 180 1024).each do |size|
       %link{ rel: 'apple-touch-icon', sizes: "#{size}x#{size}", href: asset_pack_path("media/icons/apple-touch-icon-#{size}x#{size}.png") }/

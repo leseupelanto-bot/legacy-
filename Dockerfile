@@ -1,3 +1,4 @@
+# White-background favicon v5 redeploy trigger
 # Favicon PNG-only redeploy trigger
 # Legacy avatar/frontend redeploy trigger
 # syntax=docker/dockerfile:1.4
