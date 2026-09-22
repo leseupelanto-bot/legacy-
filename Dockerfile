@@ -36,6 +36,7 @@ COPY app/javascript/mastodon/components/avatar.tsx /opt/mastodon/app/javascript/
 COPY app/javascript/types/resources.ts /opt/mastodon/app/javascript/types/resources.ts
 COPY app/serializers/rest/account_serializer.rb /opt/mastodon/app/serializers/rest/account_serializer.rb
 COPY app/views/settings/profiles/show.html.haml /opt/mastodon/app/views/settings/profiles/show.html.haml
+COPY app/views/layouts/application.html.haml /opt/mastodon/app/views/layouts/application.html.haml
 COPY app/models/concerns/account_avatar.rb /opt/mastodon/app/models/concerns/account_avatar.rb
 COPY public/ /tmp/legacy-public/
 RUN cp -a /tmp/legacy-public/. /opt/mastodon/public/ && \
