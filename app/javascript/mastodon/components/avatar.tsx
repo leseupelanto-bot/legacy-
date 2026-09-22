@@ -25,12 +25,6 @@ export const Avatar: React.FC<Props> = ({
 }) => {
   const { hovering, handleMouseEnter, handleMouseLeave } = useHovering(animate);
 
-  const style = {
-    ...styleFromParent,
-    width: `${size}px`,
-    height: `${size}px`,
-  };
-
   const accountAvatar =
     hovering || animate
       ? account?.get('avatar')
@@ -40,13 +34,27 @@ export const Avatar: React.FC<Props> = ({
 
   const src =
     account &&
-    (
-      avatarMissing ||
-      !accountAvatar ||
-      DEFAULT_AVATAR_PATTERN.test(accountAvatar)
-    )
-      ? ravenAvatar
-      : accountAvatar;
+    !avatarMissing &&
+    accountAvatar &&
+    !DEFAULT_AVATAR_PATTERN.test(accountAvatar)
+      ? accountAvatar
+      : ravenAvatar;
+
+  const style = {
+    ...styleFromParent,
+    width: `${size}px`,
+    height: `${size}px`,
+    backgroundImage: `url("${ravenAvatar}")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  };
+
+  const handleImageError: React.ReactEventHandler<HTMLImageElement> = (event) => {
+    if (event.currentTarget.src !== ravenAvatar) {
+      event.currentTarget.src = ravenAvatar;
+    }
+  };
 
   return (
     <div
@@ -57,7 +65,11 @@ export const Avatar: React.FC<Props> = ({
       onMouseLeave={handleMouseLeave}
       style={style}
     >
-      {src && <img src={src} alt={account?.get('acct')} />}
+      <img
+        src={src}
+        alt={account?.get('acct') ?? ''}
+        onError={handleImageError}
+      />
     </div>
   );
 };
