@@ -35,6 +35,7 @@ COPY ["app/javascript/images/avatars/legacy-raven.png", "/opt/mastodon/app/javas
 COPY app/javascript/mastodon/components/avatar.tsx /opt/mastodon/app/javascript/mastodon/components/avatar.tsx
 COPY app/javascript/types/resources.ts /opt/mastodon/app/javascript/types/resources.ts
 COPY app/serializers/rest/account_serializer.rb /opt/mastodon/app/serializers/rest/account_serializer.rb
+COPY app/serializers/initial_state_serializer.rb /opt/mastodon/app/serializers/initial_state_serializer.rb
 COPY app/views/settings/profiles/show.html.haml /opt/mastodon/app/views/settings/profiles/show.html.haml
 COPY app/views/layouts/application.html.haml /opt/mastodon/app/views/layouts/application.html.haml
 COPY app/models/concerns/account_avatar.rb /opt/mastodon/app/models/concerns/account_avatar.rb
