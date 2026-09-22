@@ -39,7 +39,12 @@ export const Avatar: React.FC<Props> = ({
   const avatarMissing = account?.get('avatar_missing') === true;
 
   const src =
-    avatarMissing || (accountAvatar && DEFAULT_AVATAR_PATTERN.test(accountAvatar))
+    account &&
+    (
+      avatarMissing ||
+      !accountAvatar ||
+      DEFAULT_AVATAR_PATTERN.test(accountAvatar)
+    )
       ? ravenAvatar
       : accountAvatar;
 
