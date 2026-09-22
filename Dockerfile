@@ -27,6 +27,8 @@ COPY ["public/Legacy Light.png", "/opt/mastodon/app/javascript/images/legacy-lig
 COPY ["public/Legacy Dark.png", "/opt/mastodon/app/javascript/images/legacy-dark-bg.png"]
 COPY ["app/javascript/images/logos/Logo-Light.png", "/opt/mastodon/app/javascript/images/logos/Logo-Light.png"]
 COPY ["app/javascript/images/logos/Logo-Dark.png", "/opt/mastodon/app/javascript/images/logos/Logo-Dark.png"]
+COPY ["app/javascript/images/logos/Header-Logo-Light.png", "/opt/mastodon/app/javascript/images/logos/Header-Logo-Light.png"]
+COPY ["app/javascript/images/logos/Header-Logo-Dark.png", "/opt/mastodon/app/javascript/images/logos/Header-Logo-Dark.png"]
 # Replace every Whippy wordmark asset with the Legacy wordmarks as a hard fallback.
 COPY ["app/javascript/images/logos/Logo-Light.png", "/opt/mastodon/app/javascript/images/logos/wordmark_light.png"]
 COPY ["app/javascript/images/logos/Logo-Dark.png", "/opt/mastodon/app/javascript/images/logos/wordmark_dark.png"]
