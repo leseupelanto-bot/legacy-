@@ -19,7 +19,10 @@ RUN git clone --depth 1 --branch "v4.3.1+whippy" \
 
 WORKDIR /opt/mastodon
 
+COPY streaming/index.js /opt/mastodon/streaming/index.js
+
 RUN yarn install --pure-lockfile --production --network-timeout 600000 && \
+    yarn add --ignore-scripts --no-lockfile @aws-sdk/client-s3@3.637.0 && \
     yarn cache clean
 
 EXPOSE 4000
