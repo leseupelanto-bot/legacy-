@@ -17,7 +17,7 @@ import SignInBanner from './sign_in_banner';
 
 const messages = defineMessages({
   home: { id: 'tabs_bar.home', defaultMessage: 'Home' },
-  general: { id: 'navigation_bar.general', defaultMessage: '일반' },
+  general: { id: 'navigation_bar.general', defaultMessage: '로컬' },
   notifications: { id: 'tabs_bar.notifications', defaultMessage: 'Notifications' },
   firehose: { id: 'column.firehose', defaultMessage: 'Live feeds' },
   direct: { id: 'navigation_bar.direct', defaultMessage: 'Private mentions' },

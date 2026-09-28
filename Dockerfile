@@ -1,3 +1,4 @@
+# Rename General tab to Local
 # Invite permission migration safety refresh
 # White-background favicon v5 redeploy trigger
 # Favicon PNG-only redeploy trigger

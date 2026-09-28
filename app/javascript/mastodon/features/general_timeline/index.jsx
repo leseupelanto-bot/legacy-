@@ -18,7 +18,7 @@ import ColumnHeader from '../../components/column_header';
 import StatusList from '../../components/status_list';
 
 const messages = defineMessages({
-  title: { id: 'column.general', defaultMessage: '일반' },
+  title: { id: 'column.general', defaultMessage: '로컬' },
 });
 
 const mapStateToProps = state => {

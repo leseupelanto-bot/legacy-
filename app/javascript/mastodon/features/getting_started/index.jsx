@@ -23,7 +23,7 @@ import TrendsContainer from './containers/trends_container';
 
 const messages = defineMessages({
   home_timeline: { id: 'tabs_bar.home', defaultMessage: 'Home' },
-  general_timeline: { id: 'navigation_bar.general', defaultMessage: '일반' },
+  general_timeline: { id: 'navigation_bar.general', defaultMessage: '로컬' },
   notifications: { id: 'tabs_bar.notifications', defaultMessage: 'Notifications' },
   firehose: { id: 'column.firehose', defaultMessage: 'Live feeds' },
   public_timeline: { id: 'navigation_bar.public_timeline', defaultMessage: 'Federated timeline' },
