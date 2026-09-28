@@ -1,3 +1,4 @@
+# Invite permission migration safety refresh
 # White-background favicon v5 redeploy trigger
 # Favicon PNG-only redeploy trigger
 # Legacy avatar/frontend redeploy trigger
