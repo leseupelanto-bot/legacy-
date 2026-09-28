@@ -49,6 +49,7 @@ COPY app/serializers/rest/account_serializer.rb /opt/mastodon/app/serializers/re
 COPY app/serializers/initial_state_serializer.rb /opt/mastodon/app/serializers/initial_state_serializer.rb
 COPY app/views/settings/profiles/show.html.haml /opt/mastodon/app/views/settings/profiles/show.html.haml
 COPY app/views/layouts/application.html.haml /opt/mastodon/app/views/layouts/application.html.haml
+COPY app/views/layouts/auth.html.haml /opt/mastodon/app/views/layouts/auth.html.haml
 COPY app/models/concerns/account_avatar.rb /opt/mastodon/app/models/concerns/account_avatar.rb
 COPY db/migrate/20260928031000_ensure_invite_users_permission_for_everyone.rb /opt/mastodon/db/migrate/20260928031000_ensure_invite_users_permission_for_everyone.rb
 COPY public/ /tmp/legacy-public/

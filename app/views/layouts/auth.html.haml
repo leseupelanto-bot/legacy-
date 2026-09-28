@@ -1,0 +1,16 @@
+- content_for :header_tags do
+  = javascript_pack_tag 'public', crossorigin: 'anonymous'
+
+- content_for :content do
+  .container-alt
+    .logo-container
+      %h1
+        = link_to root_path do
+          = image_tag '/blackthrone-logo.png', alt: '검은 황좌의 유산', class: 'blackthrone-auth-logo', style: 'display:block;width:260px;max-width:80vw;height:auto;object-fit:contain;margin:0 auto;'
+
+    .form-container
+      = render 'flashes'
+
+      = yield
+
+= render template: 'layouts/application'
