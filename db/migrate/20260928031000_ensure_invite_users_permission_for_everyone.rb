@@ -5,11 +5,13 @@ class EnsureInviteUsersPermissionForEveryone < ActiveRecord::Migration[7.0]
   EVERYONE_ROLE_ID = -99
 
   def up
-    execute <<~SQL.squish
-      UPDATE user_roles
-      SET permissions = permissions | 65536
-      WHERE id = -99
-    SQL
+    safety_assured do
+      execute <<~SQL.squish
+        UPDATE user_roles
+        SET permissions = permissions | 65536
+        WHERE id = -99
+      SQL
+    end
   end
 
   def down
