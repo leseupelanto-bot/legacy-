@@ -345,7 +345,7 @@ const startServer = async () => {
 
     let key;
     try {
-      key = decodeURIComponent(req.path.replace(/^\\/+/, ''));
+      key = decodeURIComponent(req.path.replace(/^[/]+/, ''));
     } catch (err) {
       res.status(400).send('Invalid media path');
       return;
