@@ -55,6 +55,8 @@ COPY app/models/concerns/account_avatar.rb /opt/mastodon/app/models/concerns/acc
 COPY db/migrate/20260928031000_ensure_invite_users_permission_for_everyone.rb /opt/mastodon/db/migrate/20260928031000_ensure_invite_users_permission_for_everyone.rb
 COPY public/ /tmp/legacy-public/
 RUN cp -a /tmp/legacy-public/. /opt/mastodon/public/
+COPY config/nginx.railway.conf.template /opt/mastodon/config/nginx.railway.conf.template
+COPY bin/railway-web-start /opt/mastodon/bin/railway-web-start
 
 WORKDIR /opt/mastodon
 RUN bundle config set --local deployment 'true' && \
@@ -82,7 +84,7 @@ RUN apt-get update && \
     useradd -l -u "${UID}" -g "${GID}" -m -d /opt/mastodon mastodon && \
     apt-get -y --no-install-recommends install \
       whois wget procps libssl3 libpq5 imagemagick ffmpeg libjemalloc2 libicu72 \
-      libidn12 libyaml-0-2 file ca-certificates tzdata libreadline8 tini && \
+      libidn12 libyaml-0-2 file ca-certificates tzdata libreadline8 tini nginx && \
     ln -s /opt/mastodon /mastodon
 
 COPY --chown=mastodon:mastodon --from=build /opt/mastodon /opt/mastodon
