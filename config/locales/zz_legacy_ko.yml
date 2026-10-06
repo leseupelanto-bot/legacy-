@@ -1,3 +1,4 @@
 ko:
   themes:
     default: "Legacy Light"
+    legacy-dark: "Legacy Dark"
