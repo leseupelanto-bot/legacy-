@@ -248,14 +248,14 @@ body {
 
   .legacy-navigation-panel .navigation-panel__logo {
     display: block !important;
-    margin: 0 0 28px !important;
+    margin: 0 0 50px !important;
   }
 
   .legacy-navigation-panel .column-link.column-link--logo {
     display: flex !important;
     width: 100% !important;
-    height: 132px !important;
-    flex: 0 0 132px !important;
+    height: auto !important;
+    flex: 0 0 auto !important;
     padding: 0 !important;
     margin: 0 !important;
     align-items: center !important;

@@ -376,13 +376,13 @@ $legacy-muted: rgba(49, 35, 13, 0.46);
     width: 100% !important;
     align-items: center !important;
     justify-content: center !important;
-    margin: 0 0 22px !important;
+    margin: 0 0 50px !important;
   }
 
   .legacy-navigation-panel .column-link.column-link--logo {
     width: 100% !important;
-    height: 226px !important;
-    flex: 0 0 226px !important;
+    height: auto !important;
+    flex: 0 0 auto !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
