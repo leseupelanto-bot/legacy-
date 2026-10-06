@@ -38,6 +38,8 @@ COPY app/javascript/mastodon/components/logo.tsx /opt/mastodon/app/javascript/ma
 COPY ["app/javascript/images/avatars/legacy-raven.png", "/opt/mastodon/app/javascript/images/avatars/legacy-raven.png"]
 COPY app/javascript/mastodon/components/avatar.tsx /opt/mastodon/app/javascript/mastodon/components/avatar.tsx
 COPY app/javascript/mastodon/features/home_timeline/index.jsx /opt/mastodon/app/javascript/mastodon/features/home_timeline/index.jsx
+COPY app/javascript/mastodon/actions/compose.js /opt/mastodon/app/javascript/mastodon/actions/compose.js
+COPY app/javascript/mastodon/reducers/notifications.js /opt/mastodon/app/javascript/mastodon/reducers/notifications.js
 COPY app/javascript/mastodon/features/general_timeline/index.jsx /opt/mastodon/app/javascript/mastodon/features/general_timeline/index.jsx
 COPY app/javascript/mastodon/features/ui/index.jsx /opt/mastodon/app/javascript/mastodon/features/ui/index.jsx
 COPY app/javascript/mastodon/features/ui/components/columns_area.jsx /opt/mastodon/app/javascript/mastodon/features/ui/components/columns_area.jsx
