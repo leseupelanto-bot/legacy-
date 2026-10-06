@@ -226,10 +226,11 @@ $legacy-muted: rgba(49, 35, 13, 0.46);
   .legacy-shell {
     display: grid !important;
     grid-template-columns:
+      minmax(0, 1fr)
       minmax(220px, 23vw)
       minmax(500px, 35vw)
       minmax(300px, 21vw)
-      1fr !important;
+      minmax(0, 1fr) !important;
     column-gap: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
@@ -239,7 +240,7 @@ $legacy-muted: rgba(49, 35, 13, 0.46);
   }
 
   .legacy-left-pane {
-    grid-column: 1 !important;
+    grid-column: 2 !important;
     grid-row: 1 !important;
     min-width: 0 !important;
     width: auto !important;
@@ -247,7 +248,7 @@ $legacy-muted: rgba(49, 35, 13, 0.46);
   }
 
   .legacy-main-pane {
-    grid-column: 2 !important;
+    grid-column: 3 !important;
     grid-row: 1 !important;
     min-width: 0 !important;
     width: auto !important;
@@ -256,7 +257,7 @@ $legacy-muted: rgba(49, 35, 13, 0.46);
   }
 
   .legacy-right-pane {
-    grid-column: 3 !important;
+    grid-column: 4 !important;
     grid-row: 1 !important;
     display: block !important;
     min-width: 0 !important;
@@ -639,9 +640,11 @@ $legacy-muted: rgba(49, 35, 13, 0.46);
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .legacy-shell {
     grid-template-columns:
+      minmax(0, 1fr)
       minmax(205px, 20vw)
       minmax(460px, 45vw)
-      minmax(280px, 27vw) !important;
+      minmax(280px, 27vw)
+      minmax(0, 1fr) !important;
   }
 
   .legacy-right-pane {
