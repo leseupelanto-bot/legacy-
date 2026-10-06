@@ -43,6 +43,7 @@ COPY app/javascript/mastodon/reducers/notifications.js /opt/mastodon/app/javascr
 COPY app/javascript/mastodon/features/general_timeline/index.jsx /opt/mastodon/app/javascript/mastodon/features/general_timeline/index.jsx
 COPY app/javascript/mastodon/features/ui/index.jsx /opt/mastodon/app/javascript/mastodon/features/ui/index.jsx
 COPY app/javascript/mastodon/features/ui/components/columns_area.jsx /opt/mastodon/app/javascript/mastodon/features/ui/components/columns_area.jsx
+COPY app/javascript/mastodon/features/ui/components/compose_panel.jsx /opt/mastodon/app/javascript/mastodon/features/ui/components/compose_panel.jsx
 COPY app/javascript/mastodon/features/ui/components/navigation_panel.jsx /opt/mastodon/app/javascript/mastodon/features/ui/components/navigation_panel.jsx
 COPY app/javascript/mastodon/features/getting_started/index.jsx /opt/mastodon/app/javascript/mastodon/features/getting_started/index.jsx
 COPY app/javascript/mastodon/features/ui/util/async-components.js /opt/mastodon/app/javascript/mastodon/features/ui/util/async-components.js
