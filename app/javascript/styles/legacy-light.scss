@@ -896,3 +896,69 @@ $legacy-muted: rgba(49, 35, 13, 0.46);
   outline: 2px solid currentColor !important;
   outline-offset: 2px !important;
 }
+
+/* ===== FORCE LEGACY LIGHT BACKGROUND VISIBLE ===== */
+html {
+  background: #f4f1e8 !important;
+}
+
+html,
+body,
+#mastodon,
+.app-holder,
+.ui,
+.page-wrapper,
+.columns-area,
+.columns-area__panels,
+.legacy-shell {
+  min-width: 100% !important;
+  min-height: 100% !important;
+}
+
+body {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
+#mastodon {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  background-color: transparent !important;
+  background-image: inherit !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
+.app-holder,
+.ui,
+.page-wrapper,
+.columns-area,
+.columns-area__panels,
+.legacy-shell,
+.layout-single-column .ui,
+.layout-multiple-columns .ui {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Side rails must never paint over the artwork. */
+.legacy-left-pane,
+.legacy-right-pane,
+.legacy-left-pane > .columns-area__panels__pane__inner,
+.legacy-right-pane > .columns-area__panels__pane__inner,
+.legacy-navigation-panel,
+.legacy-compose-panel {
+  background: transparent !important;
+}
