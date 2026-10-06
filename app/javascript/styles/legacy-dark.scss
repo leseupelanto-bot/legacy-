@@ -268,6 +268,7 @@ body {
     height: 120px !important;
     max-width: 120px !important;
     max-height: 120px !important;
+    transform: translateX(-20px) !important;
   }
 
   .legacy-navigation-panel__menu {
@@ -654,6 +655,7 @@ body {
     height: 108px !important;
     max-width: 108px !important;
     max-height: 108px !important;
+    transform: translateX(-20px) !important;
   }
 
   .legacy-navigation-panel__menu .column-link {
@@ -685,9 +687,134 @@ body {
 }
 
 
-/* Top-of-home composer is a Legacy Light-only layout element. */
-.legacy-home-composer {
-  display: none !important;
+/* ===== LEGACY DARK HOME COMPOSER ===== */
+@media screen and (min-width: 1024px) {
+  .legacy-main-pane .legacy-home-composer {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    margin: 0 0 9px !important;
+    padding: 16px 16px 11px !important;
+    background: $legacy-dark-panel-strong !important;
+    color: $legacy-dark-text !important;
+    border: 0 !important;
+    border-bottom: 1px solid $legacy-dark-border !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(2px) !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form {
+    position: relative !important;
+    box-sizing: border-box !important;
+    min-height: 142px !important;
+    margin: 0 !important;
+    padding: 12px 12px 9px !important;
+    background: $legacy-dark-row !important;
+    color: $legacy-dark-text !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__highlightable {
+    min-height: 92px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__autosuggest-wrapper,
+  .legacy-main-pane .legacy-home-composer .compose-form__modifiers,
+  .legacy-main-pane .legacy-home-composer .autosuggest-textarea,
+  .legacy-main-pane .legacy-home-composer .autosuggest-textarea__textarea,
+  .legacy-main-pane .legacy-home-composer .spoiler-input__input {
+    background: transparent !important;
+    color: $legacy-dark-text !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .autosuggest-textarea__textarea {
+    min-height: 84px !important;
+    padding: 4px 30px 6px 0 !important;
+    color: $legacy-dark-text !important;
+    resize: none !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .autosuggest-textarea__textarea::placeholder,
+  .legacy-main-pane .legacy-home-composer .spoiler-input__input::placeholder {
+    color: rgba(238, 242, 248, 0.55) !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__buttons-wrapper {
+    box-sizing: border-box !important;
+    min-height: 38px !important;
+    margin: 0 !important;
+    padding: 3px 88px 1px 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__buttons .icon-button,
+  .legacy-main-pane .legacy-home-composer .compose-form__buttons button,
+  .legacy-main-pane .legacy-home-composer .emoji-picker-dropdown,
+  .legacy-main-pane .legacy-home-composer .privacy-dropdown__value .icon-button {
+    color: $legacy-dark-text !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__buttons .icon-button:hover,
+  .legacy-main-pane .legacy-home-composer .compose-form__buttons button:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .character-counter__wrapper {
+    color: $legacy-dark-muted !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__publish {
+    position: absolute !important;
+    right: 12px !important;
+    bottom: 9px !important;
+    width: 72px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__publish-button-wrapper {
+    width: 72px !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__publish .button {
+    min-height: 32px !important;
+    padding: 6px 13px !important;
+    background: rgba(255, 255, 255, 0.94) !important;
+    color: #10192e !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__publish .button:hover,
+  .legacy-main-pane .legacy-home-composer .compose-form__publish .button:focus {
+    background: #fff !important;
+    color: #09122a !important;
+  }
+
+  .legacy-main-pane .legacy-home-composer .compose-form__publish .button:disabled {
+    background: rgba(255, 255, 255, 0.78) !important;
+    color: rgba(9, 18, 42, 0.65) !important;
+  }
+
+  /* Match Legacy Light: keep the home composer pinned above the toot list. */
+  .legacy-main-pane .scrollable .legacy-home-composer {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 30 !important;
+    flex: 0 0 auto !important;
+  }
 }
 
 
