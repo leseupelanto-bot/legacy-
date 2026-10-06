@@ -78,7 +78,7 @@ class NavigationPanel extends Component {
         {signedIn && (
           <div className='legacy-navigation-panel__menu'>
             <ColumnLink transparent to='/home' icon='home' text={intl.formatMessage(messages.home)} isActive={(match, location) => location.pathname === '/' || location.pathname === '/home'} />
-            <ColumnLink transparent to='/general' icon='globe' text={intl.formatMessage(messages.publicToots)} />
+            <ColumnLink transparent to='/general' icon='globe' text={intl.formatMessage(messages.publicToots)} isActive={(match, location) => location.pathname === '/general'} />
             <ColumnLink
               transparent
               to='/notifications'
@@ -95,9 +95,9 @@ class NavigationPanel extends Component {
               onClick={this.handleReplyMentionsClick}
               isActive={(match, location) => location.pathname === '/notifications' && this.props.activeNotificationFilter === 'mention'}
             />
-            <ColumnLink transparent to='/conversations' icon='envelope' text={intl.formatMessage(messages.direct)} />
-            <ColumnLink transparent to='/bookmarks' icon='bookmark' text={intl.formatMessage(messages.bookmarks)} />
-            <ColumnLink transparent to='/lists' icon='list-ul' text={intl.formatMessage(messages.lists)} />
+            <ColumnLink transparent to='/conversations' icon='envelope' text={intl.formatMessage(messages.direct)} isActive={(match, location) => location.pathname === '/conversations' || location.pathname === '/timelines/direct'} />
+            <ColumnLink transparent to='/bookmarks' icon='bookmark' text={intl.formatMessage(messages.bookmarks)} isActive={(match, location) => location.pathname === '/bookmarks'} />
+            <ColumnLink transparent to='/lists' icon='list-ul' text={intl.formatMessage(messages.lists)} isActive={(match, location) => location.pathname === '/lists' || location.pathname.startsWith('/lists/')} />
             <ColumnLink transparent href='/settings/preferences' icon='cog' text={intl.formatMessage(messages.preferences)} />
           </div>
         )}
