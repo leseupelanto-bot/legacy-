@@ -215,7 +215,8 @@ class SwitchingColumnsArea extends PureComponent {
           <WrappedRoute path='/start' exact component={Onboarding} content={children} />
           {/* <WrappedRoute path='/directory' component={Directory} content={children} /> */}
           <WrappedRoute path={['/search']} component={Explore} content={children} />
-          <WrappedRoute path={['/publish', '/statuses/new']} component={Compose} content={children} />
+          <Redirect from='/publish' to='/home?compose=1' exact />
+          <WrappedRoute path='/statuses/new' component={Compose} content={children} />
 
           <WrappedRoute path={['/@:acct', '/accounts/:id']} exact component={AccountTimeline} content={children} />
           <WrappedRoute path='/@:acct/tagged/:tagged?' exact component={AccountTimeline} content={children} />
