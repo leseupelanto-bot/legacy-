@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 
 import api from 'mastodon/api';
 import { fetchAnnouncements, toggleShowAnnouncements } from 'mastodon/actions/announcements';
+import { changeComposing, mountCompose, unmountCompose } from 'mastodon/actions/compose';
 import { importFetchedStatuses } from 'mastodon/actions/importer';
 import { IconWithBadge } from 'mastodon/components/icon_with_badge';
 import { criticalUpdatesPending } from 'mastodon/initial_state';
@@ -22,6 +23,7 @@ import Column from '../../components/column';
 import ColumnHeader from '../../components/column_header';
 import StatusList from '../../components/status_list';
 
+import ComposeFormContainer from 'mastodon/features/compose/containers/compose_form_container';
 import AnnouncementsContainer from 'mastodon/features/getting_started/containers/announcements_container';
 
 import { CriticalUpdateBanner } from './components/critical_update_banner';
@@ -125,6 +127,10 @@ class HomeTimeline extends PureComponent {
     dispatch(expandPublicTimeline());
 
     if (signedIn) {
+      if (!this.props.multiColumn) {
+        dispatch(mountCompose());
+      }
+
       this.disconnectPublic = dispatch(connectPublicStream({ onlyMedia: false, onlyRemote: false }));
       this.fetchMentions('initial');
       this.mentionPoll = setInterval(() => this.fetchMentions('newer'), 15000);
@@ -132,6 +138,12 @@ class HomeTimeline extends PureComponent {
   }
 
   componentWillUnmount () {
+    const { signedIn } = this.context.identity;
+
+    if (signedIn && !this.props.multiColumn) {
+      this.props.dispatch(unmountCompose());
+    }
+
     if (this.disconnectPublic) {
       this.disconnectPublic();
       this.disconnectPublic = null;
@@ -238,6 +250,14 @@ class HomeTimeline extends PureComponent {
     }
   };
 
+  handleComposeFocus = () => {
+    this.props.dispatch(changeComposing(true));
+  };
+
+  handleComposeBlur = () => {
+    this.props.dispatch(changeComposing(false));
+  };
+
   handleToggleAnnouncementsClick = e => {
     e.stopPropagation();
     this.props.dispatch(toggleShowAnnouncements());
@@ -304,6 +324,20 @@ class HomeTimeline extends PureComponent {
     const pinned = !!columnId;
     const statusIds = this.getCombinedStatusIds();
     const banners = [];
+    const { signedIn } = this.context.identity;
+
+    if (signedIn && !multiColumn) {
+      banners.push(
+        <div
+          key='legacy-home-composer'
+          className='legacy-home-composer'
+          onFocus={this.handleComposeFocus}
+          onBlur={this.handleComposeBlur}
+        >
+          <ComposeFormContainer singleColumn />
+        </div>
+      );
+    }
 
     if (criticalUpdatesPending) {
       banners.push(<CriticalUpdateBanner key='critical-update-banner' />);
