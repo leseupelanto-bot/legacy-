@@ -72,6 +72,7 @@ const mapStateToProps = state => {
 class HomeTimeline extends PureComponent {
   static contextTypes = {
     identity: PropTypes.object,
+    router: PropTypes.object.isRequired,
   };
 
   static propTypes = {
@@ -87,6 +88,7 @@ class HomeTimeline extends PureComponent {
     hasAnnouncements: PropTypes.bool,
     unreadAnnouncements: PropTypes.number,
     showAnnouncements: PropTypes.bool,
+    location: PropTypes.object,
   };
 
   state = {
@@ -135,7 +137,35 @@ class HomeTimeline extends PureComponent {
       this.fetchMentions('initial');
       this.mentionPoll = setInterval(() => this.fetchMentions('newer'), 15000);
     }
+
+    this.openComposerFromRoute();
   }
+
+  componentDidUpdate (prevProps) {
+    if (prevProps.location?.search !== this.props.location?.search) {
+      this.openComposerFromRoute();
+    }
+  }
+
+  openComposerFromRoute = () => {
+    const search = this.props.location?.search || '';
+
+    if (!new URLSearchParams(search).has('compose')) {
+      return;
+    }
+
+    this.column?.scrollTop();
+
+    window.requestAnimationFrame(() => {
+      const textarea = document.querySelector('.legacy-home-composer textarea');
+
+      if (textarea) {
+        textarea.focus();
+      }
+
+      this.context.router.history.replace('/home');
+    });
+  };
 
   componentWillUnmount () {
     const { signedIn } = this.context.identity;
