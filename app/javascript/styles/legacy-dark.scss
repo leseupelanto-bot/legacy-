@@ -26,7 +26,7 @@ body {
 
 body {
   background-color: #0a1327 !important;
-  background-image: none !important;
+  background-image: url('../images/legacy-dark-bg.png') !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -76,7 +76,7 @@ body {
 
 .ui__header__logo img.legacy-logo--dark,
 .column-link.column-link--logo img.legacy-logo--dark {
-  display: none !important;
+  display: block !important;
 }
 
 .ui__header__logo .logo--icon {
@@ -86,8 +86,7 @@ body {
 /* Settings/admin branding. */
 .admin-wrapper .sidebar > a:first-child .logo,
 .admin-wrapper .sidebar__toggle__logo .logo {
-  content: none !important;
-  display: none !important;
+  content: url('../images/logos/logo_dark.png') !important;
   display: block !important;
   width: min(120px, 100%) !important;
   max-width: 100% !important;

@@ -1,4 +1,5 @@
 import headerLightLogo from 'mastodon/../images/logos/logo_light.png';
+import headerDarkLogo from 'mastodon/../images/logos/logo_dark.png';
 import symbolLogo from 'mastodon/../images/logos/logo_dark.png';
 
 export const WordmarkLogo: React.FC = () => (
@@ -7,6 +8,11 @@ export const WordmarkLogo: React.FC = () => (
       src={headerLightLogo}
       alt='Legacy'
       className='logo legacy-logo legacy-logo--light'
+    />
+    <img
+      src={headerDarkLogo}
+      alt='Legacy'
+      className='logo legacy-logo legacy-logo--dark'
     />
   </>
 );

@@ -29,6 +29,7 @@ COPY app/javascript/styles/legacy-dark.scss /opt/mastodon/app/javascript/styles/
 COPY config/themes.yml /opt/mastodon/config/themes.yml
 COPY config/locales/zz_legacy_ko.yml /opt/mastodon/config/locales/zz_legacy_ko.yml
 COPY ["app/javascript/images/legacy-light-bg.png", "/opt/mastodon/app/javascript/images/legacy-light-bg.png"]
+COPY ["app/javascript/images/legacy-dark-bg.png", "/opt/mastodon/app/javascript/images/legacy-dark-bg.png"]
 COPY ["app/javascript/images/logos/logo_light.png", "/opt/mastodon/app/javascript/images/logos/logo_light.png"]
 COPY ["app/javascript/images/logos/logo_dark.png", "/opt/mastodon/app/javascript/images/logos/logo_dark.png"]
 COPY app/javascript/mastodon/components/logo.tsx /opt/mastodon/app/javascript/mastodon/components/logo.tsx
