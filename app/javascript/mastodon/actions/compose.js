@@ -296,8 +296,9 @@ export function submitCompose(routerHistory) {
       }
 
       if (statusId === null && response.data.visibility !== 'direct') {
-        // Legacy: make a newly published toot appear in Home immediately,
-        // even when the timeline stream is offline or "pending items" is enabled.
+        // Legacy: make a newly published toot appear immediately.
+        // The custom Home column is built from the public timeline + mentions,
+        // so public posts must also be inserted into the public timeline here.
         dispatch(importFetchedStatus({ ...response.data }));
         dispatch({
           type: TIMELINE_UPDATE,
@@ -306,6 +307,15 @@ export function submitCompose(routerHistory) {
           usePendingItems: false,
         });
         dispatch(loadPending('home'));
+
+        if (response.data.visibility === 'public') {
+          dispatch({
+            type: TIMELINE_UPDATE,
+            timeline: 'public',
+            status: { ...response.data },
+            usePendingItems: false,
+          });
+        }
 
         window.requestAnimationFrame(() => {
           const homeScrollable = document.querySelector('.legacy-main-pane .scrollable');
@@ -318,7 +328,6 @@ export function submitCompose(routerHistory) {
 
       if (statusId === null && response.data.in_reply_to_id === null && response.data.visibility === 'public') {
         insertIfOnline('community');
-        insertIfOnline('public');
         insertIfOnline(`account:${response.data.account.id}`);
       }
 
