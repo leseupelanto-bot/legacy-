@@ -1,54 +1,56 @@
-/* Legacy neutral accent: use dark gray instead of inherited accent colors. */
-$ui-primary-color: #777777;
-$ui-highlight-color: #4a4a4a;
-$ui-button-background-color: #4a4a4a;
-$ui-button-focus-background-color: #5a5a5a;
-$ui-button-focus-outline-color: #707070;
-$ui-button-tertiary-color: #666666;
-$ui-button-tertiary-border-color: #666666;
-$ui-button-tertiary-focus-background-color: #5a5a5a;
-$highlight-text-color: #777777;
-$ui-button-icon-hover-background-color: rgba(74, 74, 74, 35%);
+/* Black Throne — Legacy Dark */
+$ui-primary-color: #d9dee8;
+$ui-highlight-color: #ffffff;
+$ui-button-background-color: #ffffff;
+$ui-button-focus-background-color: #eef0f4;
+$ui-button-focus-outline-color: rgba(255, 255, 255, 0.35);
+$ui-button-tertiary-color: #d9dee8;
+$ui-button-tertiary-border-color: #d9dee8;
+$ui-button-tertiary-focus-background-color: rgba(255, 255, 255, 0.12);
+$highlight-text-color: #ffffff;
+$ui-button-icon-hover-background-color: rgba(255, 255, 255, 0.12);
 
 @import 'application';
 
-/* Legacy Dark: vanilla Mastodon UI + custom background */
-html, body {
+$legacy-dark-text: #f6f7fa;
+$legacy-dark-muted: rgba(233, 238, 247, 0.50);
+$legacy-dark-panel: rgba(5, 14, 39, 0.90);
+$legacy-dark-panel-strong: rgba(7, 16, 40, 0.96);
+$legacy-dark-row: rgba(8, 18, 43, 0.93);
+$legacy-dark-border: rgba(255, 255, 255, 0.06);
+
+html,
+body {
   min-height: 100%;
 }
 
 body {
-  background-color: #0a0a0a !important;
-  background-image: url('../images/legacy-dark-bg.png') !important;
-  background-position: center bottom !important;
+  background-color: #0a1327 !important;
+  background-image: url('../images/legacy-dark-bg-2026.webp') !important;
+  background-position: center center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-attachment: fixed !important;
+  color: $legacy-dark-text !important;
 }
 
-/* Legacy home/navigation wordmark — isolated from Whippy wordmark replacement rules. */
+/* Use the new white Black Throne mark in dark theme only. */
 .ui__header__logo,
 .layout-single-column .ui__header__logo,
 .layout-multiple-columns .ui__header__logo,
 .layout-single-column .column-link.column-link--logo,
 .layout-multiple-columns .column-link.column-link--logo {
   position: static !important;
-  left: auto !important;
-  top: auto !important;
   inset: auto !important;
   transform: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex: 0 0 230px !important;
-  width: 230px !important;
-  height: 85px !important;
+  box-sizing: border-box !important;
   padding: 0 !important;
   margin: 0 !important;
-  box-sizing: border-box !important;
   background: transparent !important;
   background-image: none !important;
-  background-repeat: no-repeat !important;
 }
 
 .ui__header__logo::before,
@@ -57,17 +59,11 @@ body {
 .column-link.column-link--logo::after {
   content: none !important;
   display: none !important;
-  background: none !important;
 }
 
 .ui__header__logo img.legacy-logo,
 .column-link.column-link--logo img.legacy-logo {
   content: normal !important;
-  display: block !important;
-  width: 230px !important;
-  height: 85px !important;
-  max-width: 230px !important;
-  max-height: 85px !important;
   object-fit: contain !important;
   margin: auto !important;
   background: transparent !important;
@@ -87,36 +83,18 @@ body {
   display: none !important;
 }
 
-@media screen and (max-width: 889px) {
-  .ui__header__logo,
-  .layout-single-column .ui__header__logo,
-  .layout-multiple-columns .ui__header__logo {
-    flex-basis: 50px !important;
-    width: 50px !important;
-    height: 50px !important;
-  }
-
-  .ui__header__logo img.legacy-logo {
-    width: 46px !important;
-    height: auto !important;
-    max-width: 46px !important;
-    max-height: 46px !important;
-  }
-}
-
-/* Use the Legacy brand in settings/admin layouts too. */
+/* Settings/admin branding. */
 .admin-wrapper .sidebar > a:first-child .logo,
 .admin-wrapper .sidebar__toggle__logo .logo {
-  content: url('../images/logos/Logo-Dark.png') !important;
+  content: url('../images/logos/Header-Logo-Dark-2026.webp') !important;
   display: block !important;
-  width: min(220px, 100%) !important;
+  width: min(120px, 100%) !important;
   max-width: 100% !important;
   height: auto !important;
   object-fit: contain !important;
   margin: 0 auto !important;
 }
 
-/* Center the settings logo in the sidebar directly above "Back to Mastodon". */
 .admin-wrapper .sidebar > a:first-child {
   display: flex !important;
   width: 100% !important;
@@ -127,13 +105,6 @@ body {
   margin: 0 !important;
 }
 
-.admin-wrapper .sidebar > a:first-child .logo {
-  position: static !important;
-  inset: auto !important;
-  transform: none !important;
-  margin: 0 auto !important;
-}
-
 .ui,
 .page-wrapper,
 .columns-area,
@@ -142,25 +113,7 @@ body {
   background: transparent !important;
 }
 
-.column > .scrollable,
-.drawer__inner,
-.column-header,
-.column-header__collapsible,
-.navigation-panel,
-.compose-panel,
-.getting-started,
-.getting-started__wrapper,
-.account__section-headline,
-.notification__filter-bar,
-.column-back-button,
-.empty-column-indicator,
-.regeneration-indicator {
-  background-color: rgba(18, 18, 18, 0.88) !important;
-  backdrop-filter: blur(2px);
-}
-
-
-/* Keep the signed-in profile avatar slot visible even while composing. */
+/* Keep profile avatar visible in the compose rail. */
 .navigation-bar > a:first-child,
 .is-composing .navigation-bar > a:first-child {
   display: block !important;
@@ -176,7 +129,9 @@ body {
 }
 
 .navigation-bar > a:first-child .account__avatar,
-.is-composing .navigation-bar > a:first-child .account__avatar {
+.is-composing .navigation-bar > a:first-child .account__avatar,
+.navigation-bar > a:first-child .account__avatar img,
+.is-composing .navigation-bar > a:first-child .account__avatar img {
   display: block !important;
   width: 46px !important;
   height: 46px !important;
@@ -184,21 +139,19 @@ body {
   min-height: 46px !important;
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+.navigation-bar > a:first-child .account__avatar,
+.is-composing .navigation-bar > a:first-child .account__avatar {
   overflow: hidden !important;
 }
 
 .navigation-bar > a:first-child .account__avatar img,
 .is-composing .navigation-bar > a:first-child .account__avatar img {
-  display: block !important;
-  width: 46px !important;
-  height: 46px !important;
   object-fit: cover !important;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
-
-/* Raven fallback behind every avatar image. Uploaded avatars render above it. */
+/* Raven fallback behind every avatar image. */
 .account__avatar {
   background-image: url('../images/avatars/legacy-raven.png') !important;
   background-size: cover !important;
@@ -209,4 +162,532 @@ body {
 .account__avatar > img {
   position: relative !important;
   z-index: 1 !important;
+}
+
+/* ===== DARK MOCKUP DESKTOP LAYOUT ===== */
+@media screen and (min-width: 1024px) {
+  .layout-single-column .ui__header {
+    display: none !important;
+  }
+
+  .legacy-shell {
+    display: grid !important;
+    grid-template-columns:
+      minmax(220px, 23vw)
+      minmax(500px, 35vw)
+      minmax(300px, 21vw)
+      1fr !important;
+    column-gap: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+    background: transparent !important;
+  }
+
+  .legacy-left-pane {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    background: transparent !important;
+  }
+
+  .legacy-main-pane {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    height: 100vh !important;
+    background: transparent !important;
+  }
+
+  .legacy-right-pane {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    display: block !important;
+    min-width: 0 !important;
+    width: auto !important;
+    margin: 0 0 0 30px !important;
+    background: transparent !important;
+  }
+
+  .legacy-left-pane > .columns-area__panels__pane__inner,
+  .legacy-right-pane > .columns-area__panels__pane__inner {
+    position: static !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background: transparent !important;
+  }
+
+  .legacy-left-pane > .columns-area__panels__pane__inner {
+    display: flex !important;
+    justify-content: flex-end !important;
+    padding: 36px 32px 26px 16px !important;
+  }
+
+  /* Left navigation */
+  .legacy-navigation-panel {
+    width: 205px !important;
+    height: auto !important;
+    max-height: calc(100vh - 62px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: auto !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    scrollbar-width: none !important;
+  }
+
+  .legacy-navigation-panel::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .legacy-navigation-panel .navigation-panel__logo {
+    display: block !important;
+    margin: 0 0 28px !important;
+  }
+
+  .legacy-navigation-panel .column-link.column-link--logo {
+    display: flex !important;
+    width: 100% !important;
+    height: 132px !important;
+    flex: 0 0 132px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+  }
+
+  .legacy-navigation-panel .column-link.column-link--logo img.legacy-logo {
+    width: 120px !important;
+    height: 120px !important;
+    max-width: 120px !important;
+    max-height: 120px !important;
+  }
+
+  .legacy-navigation-panel__menu {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+  }
+
+  .legacy-navigation-panel__menu .column-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    min-height: 47px !important;
+    padding: 8px !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    color: $legacy-dark-text !important;
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+  }
+
+  .legacy-navigation-panel__menu .column-link:hover,
+  .legacy-navigation-panel__menu .column-link:focus,
+  .legacy-navigation-panel__menu .column-link.active {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+  }
+
+  .legacy-navigation-panel__menu .column-link__icon,
+  .legacy-navigation-panel__menu .icon-with-badge {
+    flex: 0 0 26px !important;
+    width: 26px !important;
+    color: #fff !important;
+    font-size: 21px !important;
+    text-align: center !important;
+  }
+
+  .legacy-navigation-panel__menu .icon-with-badge__badge {
+    background: #fff !important;
+    border-color: #0a142b !important;
+    color: #0a142b !important;
+  }
+
+  /* Center timeline */
+  .legacy-main-pane .tabs-bar__wrapper {
+    display: none !important;
+  }
+
+  .legacy-main-pane .columns-area--mobile {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .legacy-main-pane .columns-area--mobile > .column,
+  .legacy-main-pane .columns-area--mobile .column {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    background: $legacy-dark-panel !important;
+    color: $legacy-dark-text !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(2px) !important;
+  }
+
+  .legacy-main-pane .column-header,
+  .legacy-main-pane .column-back-button {
+    min-height: 44px !important;
+    margin: 0 0 8px !important;
+    padding: 0 12px !important;
+    background: $legacy-dark-panel-strong !important;
+    color: $legacy-dark-text !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(2px) !important;
+  }
+
+  .legacy-main-pane .column-header__button,
+  .legacy-main-pane .column-header__back-button,
+  .legacy-main-pane .column-header__collapsible,
+  .legacy-main-pane .column-header__collapsible-inner,
+  .legacy-main-pane .column-header__button span {
+    color: $legacy-dark-text !important;
+  }
+
+  .legacy-main-pane .column-header__button:hover,
+  .legacy-main-pane .column-header__button:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .legacy-main-pane .scrollable,
+  .legacy-main-pane .status-list,
+  .legacy-main-pane .empty-column-indicator,
+  .legacy-main-pane .regeneration-indicator {
+    background: transparent !important;
+    color: $legacy-dark-text !important;
+    border: 0 !important;
+  }
+
+  .legacy-main-pane .status,
+  .legacy-main-pane .notification,
+  .legacy-main-pane .account,
+  .legacy-main-pane .detailed-status,
+  .legacy-main-pane .detailed-status__action-bar {
+    background: $legacy-dark-row !important;
+    color: $legacy-dark-text !important;
+    border-color: $legacy-dark-border !important;
+  }
+
+  .legacy-main-pane .status__content,
+  .legacy-main-pane .status__content p,
+  .legacy-main-pane .display-name strong,
+  .legacy-main-pane .account__display-name strong,
+  .legacy-main-pane .notification__message,
+  .legacy-main-pane .notification__message a {
+    color: $legacy-dark-text !important;
+  }
+
+  .legacy-main-pane .display-name__account,
+  .legacy-main-pane .status__relative-time,
+  .legacy-main-pane .account__header__tabs__name small {
+    color: $legacy-dark-muted !important;
+  }
+
+  .legacy-main-pane .status__action-bar .icon-button,
+  .legacy-main-pane .detailed-status__action-bar .icon-button {
+    color: rgba(246, 247, 250, 0.78) !important;
+  }
+
+  .legacy-main-pane .notification__filter-bar,
+  .legacy-main-pane .account__section-headline {
+    background: $legacy-dark-panel-strong !important;
+    color: $legacy-dark-text !important;
+    border-color: $legacy-dark-border !important;
+  }
+
+  /* Right search/profile/compose rail */
+  .legacy-compose-panel {
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 17px 0 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .legacy-compose-panel__search,
+  .legacy-compose-panel__profile,
+  .legacy-compose-panel__editor {
+    width: 100% !important;
+  }
+
+  .legacy-compose-panel__footer {
+    display: none !important;
+  }
+
+  .legacy-compose-panel__search .search {
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 0 18px !important;
+  }
+
+  .legacy-compose-panel__search .search__input {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 42px !important;
+    padding: 0 18px 0 47px !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    color: #172034 !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+    font-size: 15px !important;
+    line-height: 42px !important;
+  }
+
+  .legacy-compose-panel__search .search__input::placeholder {
+    color: rgba(23, 32, 52, 0.35) !important;
+  }
+
+  .legacy-compose-panel__search .search__icon {
+    position: absolute !important;
+    left: 13px !important;
+    right: auto !important;
+    inset-inline-start: 13px !important;
+    inset-inline-end: auto !important;
+    top: 0 !important;
+    width: 28px !important;
+    height: 42px !important;
+    color: rgba(23, 32, 52, 0.30) !important;
+  }
+
+  .legacy-compose-panel__search .search__icon .fa {
+    top: 12px !important;
+    color: rgba(23, 32, 52, 0.30) !important;
+  }
+
+  .legacy-compose-panel__profile .navigation-bar {
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    min-height: 62px !important;
+    margin: 0 0 14px !important;
+    padding: 0 4px !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: $legacy-dark-text !important;
+  }
+
+  .legacy-compose-panel__profile .navigation-bar__profile-account.display-name {
+    color: $legacy-dark-text !important;
+    font-weight: 700 !important;
+  }
+
+  .legacy-compose-panel__profile .navigation-bar__profile-account.username {
+    color: $legacy-dark-muted !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+  }
+
+  .legacy-compose-panel__profile .navigation-bar__actions,
+  .legacy-compose-panel__profile .icon-button {
+    color: $legacy-dark-text !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form {
+    position: relative !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 158px !important;
+    margin: 0 !important;
+    padding: 18px 13px 10px !important;
+    background: $legacy-dark-panel !important;
+    color: $legacy-dark-text !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(2px) !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__highlightable {
+    flex: 1 1 auto !important;
+    min-height: 102px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__autosuggest-wrapper,
+  .legacy-compose-panel__editor .compose-form__modifiers,
+  .legacy-compose-panel__editor .autosuggest-textarea,
+  .legacy-compose-panel__editor .autosuggest-textarea__textarea,
+  .legacy-compose-panel__editor .spoiler-input__input {
+    background: transparent !important;
+    color: $legacy-dark-text !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .legacy-compose-panel__editor .autosuggest-textarea__textarea {
+    min-height: 92px !important;
+    padding: 4px 30px 6px 0 !important;
+    resize: none !important;
+    color: $legacy-dark-text !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+
+  .legacy-compose-panel__editor .autosuggest-textarea__textarea::placeholder,
+  .legacy-compose-panel__editor .spoiler-input__input::placeholder {
+    color: rgba(238, 242, 248, 0.62) !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__buttons-wrapper {
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    min-height: 38px !important;
+    margin: 0 !important;
+    padding: 3px 84px 1px 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__buttons {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1px !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__buttons .icon-button,
+  .legacy-compose-panel__editor .compose-form__buttons button,
+  .legacy-compose-panel__editor .emoji-picker-dropdown,
+  .legacy-compose-panel__editor .privacy-dropdown__value .icon-button {
+    color: $legacy-dark-text !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__buttons .icon-button:hover,
+  .legacy-compose-panel__editor .compose-form__buttons button:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+  }
+
+  .legacy-compose-panel__editor .character-counter__wrapper {
+    margin-inline-start: auto !important;
+    color: $legacy-dark-muted !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__publish {
+    position: absolute !important;
+    right: 13px !important;
+    bottom: 10px !important;
+    width: 66px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__publish-button-wrapper {
+    width: 66px !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__publish .button {
+    min-height: 31px !important;
+    padding: 6px 12px !important;
+    background: rgba(255, 255, 255, 0.94) !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    color: #10192e !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__publish .button:hover,
+  .legacy-compose-panel__editor .compose-form__publish .button:focus {
+    background: #fff !important;
+    color: #09122a !important;
+  }
+
+  .legacy-compose-panel__editor .compose-form__publish .button:disabled {
+    background: rgba(255, 255, 255, 0.78) !important;
+    color: rgba(9, 18, 42, 0.65) !important;
+  }
+}
+
+/* Narrow desktop: keep the same composition but tighten rails. */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .legacy-shell {
+    grid-template-columns:
+      minmax(205px, 20vw)
+      minmax(460px, 45vw)
+      minmax(280px, 27vw) !important;
+  }
+
+  .legacy-right-pane {
+    margin-left: 18px !important;
+  }
+
+  .legacy-left-pane > .columns-area__panels__pane__inner {
+    padding-right: 18px !important;
+  }
+
+  .legacy-navigation-panel {
+    width: 185px !important;
+  }
+
+  .legacy-navigation-panel .column-link.column-link--logo img.legacy-logo {
+    width: 108px !important;
+    height: 108px !important;
+    max-width: 108px !important;
+    max-height: 108px !important;
+  }
+
+  .legacy-navigation-panel__menu .column-link {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile/tablet uses Mastodon's native responsive structure with dark palette. */
+@media screen and (max-width: 1023px) {
+  .ui__header__logo img.legacy-logo--dark {
+    width: 46px !important;
+    height: 46px !important;
+    max-width: 46px !important;
+    max-height: 46px !important;
+  }
+
+  .legacy-navigation-panel,
+  .legacy-compose-panel,
+  .column > .scrollable,
+  .column-header,
+  .column-back-button,
+  .notification__filter-bar,
+  .account__section-headline {
+    background-color: rgba(5, 14, 39, 0.92) !important;
+    color: $legacy-dark-text !important;
+  }
+
+  .column-link,
+  .column-header,
+  .column-header__button,
+  .status__content,
+  .status__content p,
+  .display-name strong {
+    color: $legacy-dark-text !important;
+  }
 }
