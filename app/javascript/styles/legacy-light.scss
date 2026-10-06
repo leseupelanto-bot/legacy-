@@ -214,186 +214,99 @@ body {
   z-index: 1 !important;
 }
 
-/* ===== BLACK THRONE LIGHT UI / 2026-10-06 ===== */
+/* ===== BLACK THRONE LIGHT UI V2 ===== */
 $legacy-ink: #31230d;
-$legacy-paper: rgba(255, 253, 248, 0.86);
+$legacy-paper: rgba(255, 253, 248, 0.85);
 $legacy-paper-strong: rgba(255, 253, 248, 0.94);
-$legacy-paper-soft: rgba(255, 253, 248, 0.78);
+$legacy-muted: rgba(49, 35, 13, 0.46);
 
-/*
- * Desktop reference:
- * - left navigation: background visible, narrow menu centered near the main column
- * - middle timeline: ~35vw, paper-like translucent surface
- * - right compose: search + profile + translucent editor
- * - remaining far-right area stays open so the background artwork remains visible
- */
-@media screen and (min-width: 1280px) {
-  .layout-single-column .ui__header {
-    display: none !important;
-  }
-
-  .layout-single-column .columns-area__panels {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
+@media screen and (min-width: 1024px) {
+  .legacy-shell {
+    display: grid !important;
+    grid-template-columns:
+      minmax(220px, 23vw)
+      minmax(500px, 35vw)
+      minmax(300px, 21vw)
+      1fr !important;
+    column-gap: 0 !important;
     width: 100vw !important;
-    min-height: 100vh !important;
     height: 100vh !important;
+    min-height: 100vh !important;
     overflow: hidden !important;
     background: transparent !important;
   }
 
-  /* LEFT */
-  .layout-single-column .columns-area__panels__pane--navigational {
-    order: 1 !important;
-    flex: 0 0 clamp(330px, 23.3vw, 447px) !important;
-    min-width: clamp(330px, 23.3vw, 447px) !important;
-    width: clamp(330px, 23.3vw, 447px) !important;
+  .legacy-left-pane {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    min-width: 0 !important;
+    width: auto !important;
     background: transparent !important;
   }
 
-  .layout-single-column .columns-area__panels__pane--navigational
-  .columns-area__panels__pane__inner {
-    position: sticky !important;
-    top: 0 !important;
+  .legacy-main-pane {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    height: 100vh !important;
+    background: transparent !important;
+  }
+
+  .legacy-right-pane {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    display: block !important;
+    min-width: 0 !important;
+    width: auto !important;
+    margin: 0 0 0 42px !important;
+    background: transparent !important;
+  }
+
+  .legacy-left-pane > .columns-area__panels__pane__inner,
+  .legacy-right-pane > .columns-area__panels__pane__inner {
+    position: static !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background: transparent !important;
+  }
+
+  .legacy-left-pane > .columns-area__panels__pane__inner {
     display: flex !important;
     justify-content: flex-end !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    height: 100vh !important;
-    padding: 38px 42px 30px 18px !important;
-    background: transparent !important;
+    padding: 38px 36px 26px 16px !important;
   }
 
-  .layout-single-column .navigation-panel.legacy-navigation-panel {
-    width: 205px !important;
-    height: auto !important;
-    max-height: calc(100vh - 68px) !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow-y: auto !important;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    scrollbar-width: none !important;
-  }
-
-  .layout-single-column .navigation-panel.legacy-navigation-panel::-webkit-scrollbar {
+  .legacy-main-pane .tabs-bar__wrapper {
     display: none !important;
   }
 
-  .layout-single-column .navigation-panel__logo {
-    display: block !important;
-    margin: 0 0 38px !important;
-  }
-
-  .layout-single-column .navigation-panel__logo hr,
-  .layout-single-column .navigation-panel hr {
-    display: none !important;
-  }
-
-  .layout-single-column .navigation-panel .column-link.column-link--logo {
-    display: flex !important;
+  .legacy-main-pane .columns-area--mobile {
     width: 100% !important;
-    height: 155px !important;
-    flex: 0 0 155px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
+    height: 100vh !important;
     margin: 0 !important;
-    background: transparent !important;
-  }
-
-  .layout-single-column .navigation-panel .column-link.column-link--logo img.legacy-logo {
-    width: 150px !important;
-    height: 150px !important;
-    max-width: 150px !important;
-    max-height: 150px !important;
-    object-fit: contain !important;
-  }
-
-  .layout-single-column .legacy-navigation-panel__menu {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-  }
-
-  .layout-single-column .navigation-panel .column-link {
-    box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    width: 100% !important;
-    min-height: 48px !important;
-    padding: 8px 8px !important;
-    border: 0 !important;
-    border-radius: 8px !important;
-    background: transparent !important;
-    color: $legacy-ink !important;
-    font-size: 19px !important;
-    line-height: 1.25 !important;
-    font-weight: 600 !important;
-    text-decoration: none !important;
-  }
-
-  .layout-single-column .navigation-panel .column-link:hover,
-  .layout-single-column .navigation-panel .column-link:focus,
-  .layout-single-column .navigation-panel .column-link.active {
-    background: rgba(49, 35, 13, 0.07) !important;
-    color: $legacy-ink !important;
-  }
-
-  .layout-single-column .navigation-panel .column-link__icon,
-  .layout-single-column .navigation-panel .icon-with-badge {
-    flex: 0 0 26px !important;
-    width: 26px !important;
-    color: $legacy-ink !important;
-    font-size: 21px !important;
-    text-align: center !important;
-  }
-
-  .layout-single-column .navigation-panel .icon-with-badge__badge {
-    background: $legacy-ink !important;
-    border-color: #f5eee0 !important;
-    color: #fff !important;
-  }
-
-  /* CENTER */
-  .layout-single-column .columns-area__panels__main {
-    order: 2 !important;
-    flex: 0 0 clamp(620px, 34.7vw, 680px) !important;
-    width: clamp(620px, 34.7vw, 680px) !important;
-    min-width: clamp(620px, 34.7vw, 680px) !important;
-    height: 100vh !important;
-    background: transparent !important;
-  }
-
-  .layout-single-column .columns-area--mobile {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    height: 100vh !important;
     padding: 0 !important;
     background: transparent !important;
   }
 
-  .layout-single-column .columns-area--mobile > .column,
-  .layout-single-column .columns-area--mobile .column {
+  .legacy-main-pane .columns-area--mobile > .column,
+  .legacy-main-pane .columns-area--mobile .column {
+    box-sizing: border-box !important;
     width: 100% !important;
     height: 100vh !important;
     padding: 0 !important;
-    background: $legacy-paper-soft !important;
+    background: $legacy-paper !important;
     border: 0 !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
   }
 
-  .layout-single-column .column-header,
-  .layout-single-column .column-back-button {
-    box-sizing: border-box !important;
+  .legacy-main-pane .column-header,
+  .legacy-main-pane .column-back-button {
     min-height: 44px !important;
-    padding: 0 12px !important;
     margin: 0 0 11px !important;
+    padding: 0 12px !important;
     background: $legacy-paper-strong !important;
     color: $legacy-ink !important;
     border: 0 !important;
@@ -402,76 +315,125 @@ $legacy-paper-soft: rgba(255, 253, 248, 0.78);
     backdrop-filter: blur(2px) !important;
   }
 
-  .layout-single-column .column-header__button,
-  .layout-single-column .column-header__back-button,
-  .layout-single-column .column-header__collapsible,
-  .layout-single-column .column-header__collapsible-inner {
+  .legacy-main-pane .column-header__button,
+  .legacy-main-pane .column-header__back-button,
+  .legacy-main-pane .column-header__collapsible,
+  .legacy-main-pane .column-header__collapsible-inner {
     color: $legacy-ink !important;
   }
 
-  .layout-single-column .column-header__button:hover,
-  .layout-single-column .column-header__button:focus {
-    background: rgba(49, 35, 13, 0.07) !important;
-  }
-
-  .layout-single-column .column > .scrollable,
-  .layout-single-column .column .scrollable,
-  .layout-single-column .empty-column-indicator,
-  .layout-single-column .regeneration-indicator {
-    background: $legacy-paper-soft !important;
+  .legacy-main-pane .scrollable,
+  .legacy-main-pane .status-list,
+  .legacy-main-pane .empty-column-indicator,
+  .legacy-main-pane .regeneration-indicator {
+    background: transparent !important;
     color: $legacy-ink !important;
     border: 0 !important;
-    border-radius: 0 !important;
-    backdrop-filter: blur(2px) !important;
   }
 
-  .layout-single-column .status,
-  .layout-single-column .notification,
-  .layout-single-column .account {
+  .legacy-main-pane .status,
+  .legacy-main-pane .notification,
+  .legacy-main-pane .account {
+    background: rgba(255, 253, 248, 0.70) !important;
     border-color: rgba(49, 35, 13, 0.08) !important;
-  }
-
-  .layout-single-column .status__content,
-  .layout-single-column .status__content p,
-  .layout-single-column .display-name strong,
-  .layout-single-column .account__display-name strong,
-  .layout-single-column .column-header__button,
-  .layout-single-column .column-header__button span {
     color: $legacy-ink !important;
   }
 
-  .layout-single-column .status__relative-time,
-  .layout-single-column .display-name__account,
-  .layout-single-column .account__header__tabs__name small {
-    color: rgba(49, 35, 13, 0.48) !important;
+  .legacy-main-pane .status__content,
+  .legacy-main-pane .status__content p,
+  .legacy-main-pane .display-name strong,
+  .legacy-main-pane .account__display-name strong {
+    color: $legacy-ink !important;
   }
 
-  .layout-single-column .status__action-bar .icon-button,
-  .layout-single-column .detailed-status__action-bar .icon-button {
-    color: rgba(49, 35, 13, 0.72) !important;
+  .legacy-main-pane .display-name__account,
+  .legacy-main-pane .status__relative-time {
+    color: $legacy-muted !important;
   }
 
-  /* RIGHT */
-  .layout-single-column .columns-area__panels__pane--compositional {
-    order: 3 !important;
+  .legacy-navigation-panel {
+    width: 205px !important;
+    height: auto !important;
+    max-height: calc(100vh - 64px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: auto !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    scrollbar-width: none !important;
+  }
+
+  .legacy-navigation-panel::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .legacy-navigation-panel .navigation-panel__logo {
     display: block !important;
-    flex: 0 0 clamp(340px, 20.3vw, 390px) !important;
-    width: clamp(340px, 20.3vw, 390px) !important;
-    min-width: clamp(340px, 20.3vw, 390px) !important;
-    height: 100vh !important;
-    margin-inline-start: 42px !important;
-    background: transparent !important;
+    margin: 0 0 32px !important;
   }
 
-  .layout-single-column .columns-area__panels__pane--compositional
-  .columns-area__panels__pane__inner {
+  .legacy-navigation-panel .column-link.column-link--logo {
     width: 100% !important;
-    height: 100vh !important;
+    height: 160px !important;
+    flex: 0 0 160px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     background: transparent !important;
   }
 
-  .layout-single-column .compose-panel {
+  .legacy-navigation-panel .column-link.column-link--logo img.legacy-logo {
+    width: 150px !important;
+    height: 150px !important;
+    max-width: 150px !important;
+    max-height: 150px !important;
+  }
+
+  .legacy-navigation-panel__menu {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+  }
+
+  .legacy-navigation-panel__menu .column-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    min-height: 47px !important;
+    padding: 8px !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    color: $legacy-ink !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+  }
+
+  .legacy-navigation-panel__menu .column-link:hover,
+  .legacy-navigation-panel__menu .column-link:focus,
+  .legacy-navigation-panel__menu .column-link.active {
+    background: rgba(49, 35, 13, 0.07) !important;
+    color: $legacy-ink !important;
+  }
+
+  .legacy-navigation-panel__menu .column-link__icon,
+  .legacy-navigation-panel__menu .icon-with-badge {
+    flex: 0 0 26px !important;
+    width: 26px !important;
+    color: $legacy-ink !important;
+    font-size: 21px !important;
+    text-align: center !important;
+  }
+
+  .legacy-compose-panel {
     box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
     width: 100% !important;
     height: auto !important;
     margin: 22px 0 0 !important;
@@ -483,23 +445,28 @@ $legacy-paper-soft: rgba(255, 253, 248, 0.78);
     backdrop-filter: none !important;
   }
 
-  .layout-single-column .compose-panel > .link-footer,
-  .layout-single-column .compose-panel .link-footer {
+  .legacy-compose-panel__search,
+  .legacy-compose-panel__profile,
+  .legacy-compose-panel__editor {
+    width: 100% !important;
+  }
+
+  .legacy-compose-panel__footer {
     display: none !important;
   }
 
-  .layout-single-column .compose-panel .search {
+  .legacy-compose-panel__search .search {
     position: relative !important;
     width: 100% !important;
-    margin: 0 0 25px !important;
+    margin: 0 0 24px !important;
   }
 
-  .layout-single-column .compose-panel .search__input {
+  .legacy-compose-panel__search .search__input {
     box-sizing: border-box !important;
     width: 100% !important;
     height: 46px !important;
-    padding: 0 18px 0 49px !important;
-    background: rgba(255, 255, 255, 0.91) !important;
+    padding: 0 18px 0 50px !important;
+    background: rgba(255, 255, 255, 0.92) !important;
     color: $legacy-ink !important;
     border: 0 !important;
     border-radius: 999px !important;
@@ -508,63 +475,58 @@ $legacy-paper-soft: rgba(255, 253, 248, 0.78);
     line-height: 46px !important;
   }
 
-  .layout-single-column .compose-panel .search__input::placeholder {
-    color: rgba(49, 35, 13, 0.34) !important;
+  .legacy-compose-panel__search .search__input::placeholder {
+    color: rgba(49, 35, 13, 0.32) !important;
   }
 
-  .layout-single-column .compose-panel .search__icon {
+  .legacy-compose-panel__search .search__icon {
+    position: absolute !important;
+    left: 14px !important;
+    right: auto !important;
     inset-inline-start: 14px !important;
     inset-inline-end: auto !important;
     top: 0 !important;
     width: 28px !important;
     height: 46px !important;
-    color: rgba(49, 35, 13, 0.28) !important;
+    color: rgba(49, 35, 13, 0.30) !important;
   }
 
-  .layout-single-column .compose-panel .search__icon .fa {
+  .legacy-compose-panel__search .search__icon .fa {
     top: 14px !important;
-    color: rgba(49, 35, 13, 0.28) !important;
+    color: rgba(49, 35, 13, 0.30) !important;
   }
 
-  .layout-single-column .compose-panel .navigation-bar {
+  .legacy-compose-panel__profile .navigation-bar {
     box-sizing: border-box !important;
     display: flex !important;
     align-items: center !important;
-    min-height: 62px !important;
-    margin: 0 0 24px !important;
+    min-height: 64px !important;
+    margin: 0 0 22px !important;
     padding: 0 4px !important;
     background: transparent !important;
     border: 0 !important;
     color: $legacy-ink !important;
   }
 
-  .layout-single-column .compose-panel .navigation-bar__profile {
-    color: $legacy-ink !important;
-  }
-
-  .layout-single-column .compose-panel .navigation-bar__profile-account.display-name {
+  .legacy-compose-panel__profile .navigation-bar__profile-account.display-name {
     color: $legacy-ink !important;
     font-weight: 700 !important;
   }
 
-  .layout-single-column .compose-panel .navigation-bar__profile-account.username {
-    color: rgba(49, 35, 13, 0.38) !important;
+  .legacy-compose-panel__profile .navigation-bar__profile-account.username {
+    color: $legacy-muted !important;
     font-size: 12px !important;
     font-weight: 400 !important;
   }
 
-  .layout-single-column .compose-panel .navigation-bar__actions {
-    color: $legacy-ink !important;
-  }
-
-  .layout-single-column .compose-panel .compose-form {
+  .legacy-compose-panel__editor .compose-form {
     position: relative !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
-    min-height: 216px !important;
+    min-height: 214px !important;
     margin: 0 !important;
-    padding: 22px 14px 12px !important;
+    padding: 20px 14px 12px !important;
     background: $legacy-paper !important;
     border: 0 !important;
     border-radius: 0 !important;
@@ -572,84 +534,79 @@ $legacy-paper-soft: rgba(255, 253, 248, 0.78);
     backdrop-filter: blur(2px) !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__highlightable {
+  .legacy-compose-panel__editor .compose-form__highlightable {
     flex: 1 1 auto !important;
-    min-height: 150px !important;
+    min-height: 145px !important;
     background: transparent !important;
     box-shadow: none !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__autosuggest-wrapper,
-  .layout-single-column .compose-panel .compose-form__modifiers,
-  .layout-single-column .compose-panel .autosuggest-textarea__textarea,
-  .layout-single-column .compose-panel .spoiler-input__input {
+  .legacy-compose-panel__editor .compose-form__autosuggest-wrapper,
+  .legacy-compose-panel__editor .compose-form__modifiers,
+  .legacy-compose-panel__editor .autosuggest-textarea,
+  .legacy-compose-panel__editor .autosuggest-textarea__textarea,
+  .legacy-compose-panel__editor .spoiler-input__input {
     background: transparent !important;
     color: $legacy-ink !important;
     border: 0 !important;
     box-shadow: none !important;
   }
 
-  .layout-single-column .compose-panel .autosuggest-textarea__textarea {
+  .legacy-compose-panel__editor .autosuggest-textarea__textarea {
     min-height: 128px !important;
-    padding: 6px 28px 8px 0 !important;
+    padding: 5px 30px 8px 0 !important;
     resize: none !important;
+    color: $legacy-ink !important;
     font-size: 14px !important;
-    line-height: 1.6 !important;
+    line-height: 1.55 !important;
   }
 
-  .layout-single-column .compose-panel .autosuggest-textarea__textarea::placeholder,
-  .layout-single-column .compose-panel .spoiler-input__input::placeholder {
+  .legacy-compose-panel__editor .autosuggest-textarea__textarea::placeholder,
+  .legacy-compose-panel__editor .spoiler-input__input::placeholder {
     color: rgba(49, 35, 13, 0.36) !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__buttons-wrapper {
+  .legacy-compose-panel__editor .compose-form__buttons-wrapper {
     box-sizing: border-box !important;
     display: flex !important;
     align-items: center !important;
     min-height: 42px !important;
-    padding: 5px 86px 3px 0 !important;
     margin: 0 !important;
+    padding: 4px 88px 2px 0 !important;
     background: transparent !important;
     border: 0 !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__buttons {
+  .legacy-compose-panel__editor .compose-form__buttons {
     display: flex !important;
     align-items: center !important;
     gap: 2px !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__buttons .icon-button,
-  .layout-single-column .compose-panel .compose-form__buttons button {
+  .legacy-compose-panel__editor .compose-form__buttons .icon-button,
+  .legacy-compose-panel__editor .compose-form__buttons button {
     color: $legacy-ink !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__buttons .icon-button:hover,
-  .layout-single-column .compose-panel .compose-form__buttons button:hover {
-    background: rgba(49, 35, 13, 0.07) !important;
-    color: $legacy-ink !important;
-  }
-
-  .layout-single-column .compose-panel .character-counter__wrapper {
+  .legacy-compose-panel__editor .character-counter__wrapper {
     margin-inline-start: auto !important;
-    color: rgba(49, 35, 13, 0.52) !important;
+    color: $legacy-muted !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__publish {
+  .legacy-compose-panel__editor .compose-form__publish {
     position: absolute !important;
     right: 14px !important;
     bottom: 12px !important;
-    width: 72px !important;
+    width: 74px !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__publish-button-wrapper {
-    width: 72px !important;
+  .legacy-compose-panel__editor .compose-form__publish-button-wrapper {
+    width: 74px !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__publish .button {
-    box-sizing: border-box !important;
+  .legacy-compose-panel__editor .compose-form__publish .button {
     min-height: 34px !important;
     padding: 7px 14px !important;
     background: $legacy-ink !important;
@@ -661,40 +618,56 @@ $legacy-paper-soft: rgba(255, 253, 248, 0.78);
     box-shadow: none !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__publish .button:hover,
-  .layout-single-column .compose-panel .compose-form__publish .button:focus {
+  .legacy-compose-panel__editor .compose-form__publish .button:hover,
+  .legacy-compose-panel__editor .compose-form__publish .button:focus {
     background: #1f1609 !important;
   }
 
-  .layout-single-column .compose-panel .compose-form__publish .button:disabled {
+  .legacy-compose-panel__editor .compose-form__publish .button:disabled {
     background: rgba(49, 35, 13, 0.35) !important;
-    color: rgba(255, 253, 248, 0.9) !important;
-  }
-
-  .layout-single-column .compose-panel .emoji-picker-dropdown {
-    color: $legacy-ink !important;
-  }
-
-  .layout-single-column .notification__filter-bar,
-  .layout-single-column .account__section-headline {
-    background: $legacy-paper-strong !important;
-    color: $legacy-ink !important;
-    border-color: rgba(49, 35, 13, 0.08) !important;
+    color: rgba(255, 253, 248, 0.92) !important;
   }
 }
 
-/* Tablet keeps Mastodon's native responsive layout, but preserves the light palette. */
-@media screen and (min-width: 890px) and (max-width: 1279px) {
-  .layout-single-column .navigation-panel,
-  .layout-single-column .compose-panel,
-  .layout-single-column .column > .scrollable,
-  .layout-single-column .column-header {
-    background-color: rgba(255, 253, 248, 0.90) !important;
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .legacy-shell {
+    grid-template-columns:
+      minmax(205px, 20vw)
+      minmax(460px, 45vw)
+      minmax(280px, 27vw) !important;
   }
 
-  .layout-single-column .column-link,
-  .layout-single-column .column-header,
-  .layout-single-column .compose-panel {
-    color: $legacy-ink !important;
+  .legacy-right-pane {
+    margin-left: 20px !important;
+  }
+
+  .legacy-left-pane > .columns-area__panels__pane__inner {
+    padding-right: 20px !important;
+  }
+
+  .legacy-navigation-panel {
+    width: 185px !important;
+  }
+
+  .legacy-navigation-panel .column-link.column-link--logo img.legacy-logo {
+    width: 128px !important;
+    height: 128px !important;
+    max-width: 128px !important;
+    max-height: 128px !important;
+  }
+
+  .legacy-navigation-panel__menu .column-link {
+    font-size: 16px !important;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .legacy-shell {
+    display: flex !important;
+  }
+
+  .legacy-navigation-panel,
+  .legacy-compose-panel {
+    background-color: rgba(255, 253, 248, 0.90) !important;
   }
 }
