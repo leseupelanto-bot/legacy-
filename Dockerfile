@@ -29,9 +29,6 @@ COPY app/javascript/styles/legacy-dark.scss /opt/mastodon/app/javascript/styles/
 COPY config/themes.yml /opt/mastodon/config/themes.yml
 COPY config/locales/zz_legacy_ko.yml /opt/mastodon/config/locales/zz_legacy_ko.yml
 COPY ["public/Legacy Light.png", "/opt/mastodon/app/javascript/images/legacy-light-bg.png"]
-COPY ["app/javascript/images/logos/Logo-Light.png", "/opt/mastodon/app/javascript/images/logos/Logo-Light.png"]
-COPY ["app/javascript/images/logos/Header-Logo-Light.png", "/opt/mastodon/app/javascript/images/logos/Header-Logo-Light.png"]
-COPY app/javascript/mastodon/components/logo.tsx /opt/mastodon/app/javascript/mastodon/components/logo.tsx
 COPY ["app/javascript/images/avatars/legacy-raven.png", "/opt/mastodon/app/javascript/images/avatars/legacy-raven.png"]
 COPY app/javascript/mastodon/components/avatar.tsx /opt/mastodon/app/javascript/mastodon/components/avatar.tsx
 COPY app/javascript/mastodon/features/home_timeline/index.jsx /opt/mastodon/app/javascript/mastodon/features/home_timeline/index.jsx
