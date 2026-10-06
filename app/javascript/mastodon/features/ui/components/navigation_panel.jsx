@@ -40,6 +40,7 @@ class NavigationPanel extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     intl: PropTypes.object.isRequired,
+    activeNotificationFilter: PropTypes.string,
   };
 
   handleNotificationsClick = e => {
@@ -84,6 +85,7 @@ class NavigationPanel extends Component {
               icon={<NotificationsCounterIcon className='column-link__icon' />}
               text={intl.formatMessage(messages.notifications)}
               onClick={this.handleNotificationsClick}
+              isActive={() => this.props.activeNotificationFilter === 'all'}
             />
             <ColumnLink
               transparent
@@ -91,6 +93,7 @@ class NavigationPanel extends Component {
               icon='comments'
               text={intl.formatMessage(messages.replyMentions)}
               onClick={this.handleReplyMentionsClick}
+              isActive={() => this.props.activeNotificationFilter === 'mention'}
             />
             <ColumnLink transparent to='/conversations' icon='envelope' text={intl.formatMessage(messages.direct)} />
             <ColumnLink transparent to='/bookmarks' icon='bookmark' text={intl.formatMessage(messages.bookmarks)} />
@@ -112,4 +115,8 @@ class NavigationPanel extends Component {
 
 }
 
-export default connect()(injectIntl(NavigationPanel));
+const mapStateToProps = state => ({
+  activeNotificationFilter: state.getIn(['settings', 'notifications', 'quickFilter', 'active'], 'all'),
+});
+
+export default connect(mapStateToProps)(injectIntl(NavigationPanel));
