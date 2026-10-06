@@ -293,7 +293,6 @@ body {
   }
 
   .legacy-navigation-panel__menu .column-link:hover,
-  .legacy-navigation-panel__menu .column-link:focus,
   .legacy-navigation-panel__menu .column-link.active {
     background: rgba(255, 255, 255, 0.08) !important;
     color: #fff !important;
@@ -696,4 +695,15 @@ body {
 /* Top-of-home composer is a Legacy Light-only layout element. */
 .legacy-home-composer {
   display: none !important;
+}
+
+
+/* Navigation focus must not look like a second selected tab. */
+.legacy-navigation-panel__menu .column-link:focus {
+  outline: none !important;
+}
+
+.legacy-navigation-panel__menu .column-link:focus-visible {
+  outline: 2px solid currentColor !important;
+  outline-offset: 2px !important;
 }
