@@ -297,9 +297,32 @@ export function submitCompose(routerHistory) {
 
       if (statusId === null && response.data.visibility !== 'direct') {
         // Legacy: make a newly published toot appear immediately.
-        // The custom Home column is built from the public timeline + mentions,
-        // so public posts must also be inserted into the public timeline here.
+        // Remember it independently of public-timeline refreshes so custom Home
+        // can render it instantly from any compose surface.
         dispatch(importFetchedStatus({ ...response.data }));
+
+        try {
+          const key = 'legacy-home-published-statuses';
+          const previous = JSON.parse(window.sessionStorage.getItem(key) || '[]');
+          const recent = [
+            {
+              id: response.data.id,
+              createdAt: response.data.created_at,
+            },
+            ...previous.filter(item => item?.id !== response.data.id),
+          ].slice(0, 40);
+
+          window.sessionStorage.setItem(key, JSON.stringify(recent));
+          window.dispatchEvent(new CustomEvent('legacy-home-status-published', {
+            detail: {
+              id: response.data.id,
+              createdAt: response.data.created_at,
+            },
+          }));
+        } catch (error) {
+          // Storage may be unavailable in hardened/private browser modes.
+          // The Redux timeline insert below remains as a fallback.
+        }
         dispatch({
           type: TIMELINE_UPDATE,
           timeline: 'home',
