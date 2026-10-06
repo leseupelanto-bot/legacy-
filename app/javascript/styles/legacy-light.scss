@@ -420,7 +420,6 @@ $legacy-muted: rgba(49, 35, 13, 0.46);
   }
 
   .legacy-navigation-panel__menu .column-link:hover,
-  .legacy-navigation-panel__menu .column-link:focus,
   .legacy-navigation-panel__menu .column-link.active {
     background: rgba(49, 35, 13, 0.07) !important;
     color: $legacy-ink !important;
@@ -885,4 +884,15 @@ $legacy-muted: rgba(49, 35, 13, 0.46);
   .legacy-main-pane .scrollable .item-list {
     min-height: 100% !important;
   }
+}
+
+
+/* Navigation focus must not look like a second selected tab. */
+.legacy-navigation-panel__menu .column-link:focus {
+  outline: none !important;
+}
+
+.legacy-navigation-panel__menu .column-link:focus-visible {
+  outline: 2px solid currentColor !important;
+  outline-offset: 2px !important;
 }
