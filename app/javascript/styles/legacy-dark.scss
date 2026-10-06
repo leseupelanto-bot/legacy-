@@ -26,7 +26,7 @@ body {
 
 body {
   background-color: #0a1327 !important;
-  background-image: url('../images/legacy-dark-bg-2026.webp') !important;
+  background-image: url('/legacy-dark-bg-2026.webp') !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -86,7 +86,7 @@ body {
 /* Settings/admin branding. */
 .admin-wrapper .sidebar > a:first-child .logo,
 .admin-wrapper .sidebar__toggle__logo .logo {
-  content: url('../images/logos/Header-Logo-Dark-2026.webp') !important;
+  content: url('/header-logo-dark-2026.webp') !important;
   display: block !important;
   width: min(120px, 100%) !important;
   max-width: 100% !important;
