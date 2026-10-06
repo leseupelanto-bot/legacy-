@@ -93,6 +93,7 @@ class HomeTimeline extends PureComponent {
 
   state = {
     mentions: [],
+    publishedStatuses: [],
     mentionSinceId: null,
     mentionMaxId: null,
     mentionHasMore: true,
@@ -121,6 +122,41 @@ class HomeTimeline extends PureComponent {
     this.column = c;
   };
 
+  hydratePublishedStatuses = () => {
+    try {
+      const stored = JSON.parse(window.sessionStorage.getItem('legacy-home-published-statuses') || '[]');
+
+      if (Array.isArray(stored)) {
+        this.setState({
+          publishedStatuses: stored
+            .filter(item => item && item.id)
+            .slice(0, 40),
+        });
+      }
+    } catch (error) {
+      // Ignore unavailable/corrupt session storage.
+    }
+  };
+
+  handlePublishedStatus = event => {
+    const item = event?.detail;
+
+    if (!item?.id) {
+      return;
+    }
+
+    this.setState(prevState => ({
+      publishedStatuses: [
+        item,
+        ...prevState.publishedStatuses.filter(existing => existing.id !== item.id),
+      ].slice(0, 40),
+    }));
+
+    window.requestAnimationFrame(() => {
+      this.column?.scrollTop();
+    });
+  };
+
   componentDidMount () {
     const { dispatch } = this.props;
     const { signedIn } = this.context.identity;
@@ -138,6 +174,8 @@ class HomeTimeline extends PureComponent {
       this.mentionPoll = setInterval(() => this.fetchMentions('newer'), 15000);
     }
 
+    this.hydratePublishedStatuses();
+    window.addEventListener('legacy-home-status-published', this.handlePublishedStatus);
     this.openComposerFromRoute();
   }
 
@@ -169,6 +207,8 @@ class HomeTimeline extends PureComponent {
 
   componentWillUnmount () {
     const { signedIn } = this.context.identity;
+
+    window.removeEventListener('legacy-home-status-published', this.handlePublishedStatus);
 
     if (signedIn && !this.props.multiColumn) {
       this.props.dispatch(unmountCompose());
@@ -306,6 +346,19 @@ class HomeTimeline extends PureComponent {
           id,
           createdAt,
           priority: 0,
+        });
+      }
+    });
+
+    this.state.publishedStatuses.forEach(item => {
+      const status = statuses.get(item.id);
+      const createdAt = status?.get('created_at') || item.createdAt;
+
+      if (createdAt && status?.get('visibility') !== 'direct') {
+        entries.set(item.id, {
+          id: item.id,
+          createdAt,
+          priority: 2,
         });
       }
     });
