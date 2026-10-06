@@ -1,4 +1,4 @@
-import headerLightLogo from 'mastodon/../images/logos/Header-Logo-Light.png';
+import headerLightLogo from 'mastodon/../images/logos/logo_light.png';
 import symbolLogo from 'mastodon/../images/logos/logo_dark.png';
 
 export const WordmarkLogo: React.FC = () => (
