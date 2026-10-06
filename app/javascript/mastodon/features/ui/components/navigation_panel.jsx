@@ -19,7 +19,7 @@ import SignInBanner from './sign_in_banner';
 
 const messages = defineMessages({
   home: { id: 'legacy.navigation.home', defaultMessage: '홈' },
-  publicToots: { id: 'legacy.navigation.public_toots', defaultMessage: '퍼블릭 툿' },
+  publicToots: { id: 'legacy.navigation.public_toots', defaultMessage: '로컬' },
   notifications: { id: 'legacy.navigation.notifications', defaultMessage: '알림' },
   replyMentions: { id: 'legacy.navigation.reply_mentions', defaultMessage: '답장할 멘션' },
   direct: { id: 'legacy.navigation.direct', defaultMessage: 'DM' },
@@ -62,7 +62,7 @@ class NavigationPanel extends Component {
     return (
       <div className='navigation-panel legacy-navigation-panel'>
         <div className='navigation-panel__logo'>
-          <Link to='/' className='column-link column-link--logo'><WordmarkLogo /></Link>
+          <Link to='/home' className='column-link column-link--logo'><WordmarkLogo /></Link>
 
           {transientSingleColumn ? (
             <div className='switch-to-advanced'>
@@ -77,7 +77,7 @@ class NavigationPanel extends Component {
 
         {signedIn && (
           <div className='legacy-navigation-panel__menu'>
-            <ColumnLink transparent to='/home' icon='home' text={intl.formatMessage(messages.home)} />
+            <ColumnLink transparent to='/home' icon='home' text={intl.formatMessage(messages.home)} isActive={(match, location) => location.pathname === '/' || location.pathname === '/home'} />
             <ColumnLink transparent to='/general' icon='globe' text={intl.formatMessage(messages.publicToots)} />
             <ColumnLink
               transparent
@@ -85,7 +85,7 @@ class NavigationPanel extends Component {
               icon={<NotificationsCounterIcon className='column-link__icon' />}
               text={intl.formatMessage(messages.notifications)}
               onClick={this.handleNotificationsClick}
-              isActive={() => this.props.activeNotificationFilter === 'all'}
+              isActive={(match, location) => location.pathname === '/notifications' && this.props.activeNotificationFilter === 'all'}
             />
             <ColumnLink
               transparent
@@ -93,7 +93,7 @@ class NavigationPanel extends Component {
               icon='comments'
               text={intl.formatMessage(messages.replyMentions)}
               onClick={this.handleReplyMentionsClick}
-              isActive={() => this.props.activeNotificationFilter === 'mention'}
+              isActive={(match, location) => location.pathname === '/notifications' && this.props.activeNotificationFilter === 'mention'}
             />
             <ColumnLink transparent to='/conversations' icon='envelope' text={intl.formatMessage(messages.direct)} />
             <ColumnLink transparent to='/bookmarks' icon='bookmark' text={intl.formatMessage(messages.bookmarks)} />
