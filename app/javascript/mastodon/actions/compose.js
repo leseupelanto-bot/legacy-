@@ -11,7 +11,7 @@ import { showAlert, showAlertForError } from './alerts';
 import { useEmoji } from './emojis';
 import { importFetchedAccounts, importFetchedStatus } from './importer';
 import { openModal } from './modal';
-import { updateTimeline } from './timelines';
+import { loadPending, TIMELINE_UPDATE, updateTimeline } from './timelines';
 
 /** @type {AbortController | undefined} */
 let fetchComposeSuggestionsAccountsController;
@@ -296,7 +296,24 @@ export function submitCompose(routerHistory) {
       }
 
       if (statusId === null && response.data.visibility !== 'direct') {
-        insertIfOnline('home');
+        // Legacy: make a newly published toot appear in Home immediately,
+        // even when the timeline stream is offline or "pending items" is enabled.
+        dispatch(importFetchedStatus({ ...response.data }));
+        dispatch({
+          type: TIMELINE_UPDATE,
+          timeline: 'home',
+          status: { ...response.data },
+          usePendingItems: false,
+        });
+        dispatch(loadPending('home'));
+
+        window.requestAnimationFrame(() => {
+          const homeScrollable = document.querySelector('.legacy-main-pane .scrollable');
+
+          if (homeScrollable) {
+            homeScrollable.scrollTo({ top: 0, behavior: 'auto' });
+          }
+        });
       }
 
       if (statusId === null && response.data.in_reply_to_id === null && response.data.visibility === 'public') {
@@ -305,12 +322,17 @@ export function submitCompose(routerHistory) {
         insertIfOnline(`account:${response.data.account.id}`);
       }
 
-      dispatch(showAlert({
-        message: statusId === null ? messages.published : messages.saved,
-        action: messages.open,
-        dismissAfter: 10000,
-        onClick: () => routerHistory.push(`/@${response.data.account.username}/${response.data.id}`),
-      }));
+      // Legacy: newly published toots are rendered in Home immediately,
+      // so do not show the redundant "Post published. Open" toast.
+      // Keep the saved confirmation when editing an existing toot.
+      if (statusId !== null) {
+        dispatch(showAlert({
+          message: messages.saved,
+          action: messages.open,
+          dismissAfter: 10000,
+          onClick: () => routerHistory.push(`/@${response.data.account.username}/${response.data.id}`),
+        }));
+      }
     }).catch(function (error) {
       dispatch(submitComposeFail(error));
     });
