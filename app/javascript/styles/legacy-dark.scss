@@ -691,3 +691,9 @@ body {
     color: $legacy-dark-text !important;
   }
 }
+
+
+/* Top-of-home composer is a Legacy Light-only layout element. */
+.legacy-home-composer {
+  display: none !important;
+}
